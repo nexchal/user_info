@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome">
+    <title>지능형 Web</title>
+<head>
+<script src="../assets/js/checkform.js"></script>
+	<style>
+
+  #title {text-decoration: none; color: white;}
+
+    div.top {
+        height:100px;
+        width: 100%;
+
+    }
+
+    div.right {
+        height: auto;
+        width: 100%;
+        float: right;
+        position: relative;
+    }
+    div.bottom {
+        bottom:0px;
+        width: 100%;
+        position:fixed;
+    }
+  </style>
+
+</head>
+<body>
+
+	 <div class="top"><%- frame_top %></div>
+    <div class="right"><%- frame_body %></div>
+    <div class="bottom"><%- frame_bottom %></div>
+
+</body>
+</html>
