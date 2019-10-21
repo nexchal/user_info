@@ -1,0 +1,44 @@
+<html>
+<head>
+<script src='../assets/js/ch.js'></script>
+</head>
+<body>
+<form method = "post" name = "frm">
+<input type="hidden" name="checked" value=0>
+담당자 : <%- name %><br>
+연락처 : <%- tel %><br>
+지역 :  <%- area %>&nbsp<%- area1 %>&nbsp<%- station %> <br>
+
+고장사유 리스트: <br><strong>
+<% for( var j = 0 ; j < length; j++) { %>
+  <%= user_fault[j][0] %><br>
+  <% } %>
+  <br>
+</strong>
+
+<input type = "button"  onclick="myFunction()" value = "추가">
+<div id="myDIV"  style = " display:none ;">
+<table>
+
+<% for( var i = 0 ; i < all_fault_length; i++) { %>
+<% if (i%5==0) { %>
+<tr><td><label><input type="checkbox" class = "ch" name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
+<% } else { %>
+<td><label><input type="checkbox" class = "ch" name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
+<% } %>
+<% } %>
+</table><br>
+
+
+<input type = "hidden" name = "title" value ="<%= title %>">
+<input type = "hidden" name = "emp_id" value ="<%= id %>">
+<button type = "button" onclick = "ch()">저장</div></form>
+
+
+<div style="display:none;">
+<% for( var i = 0 ; i < checked_length; i++) { %>
+<input type="checkbox" name="user_selected_value" value="<%= checked[i] %>"> <%=  checked[i] %>
+<% } %> </div>
+
+</body>
+</html>
