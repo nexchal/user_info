@@ -7,14 +7,14 @@ function createview(_area,_area1,_station, _logicname)//유저 리스트 보기 
       <option value='logic'>고장로직</option>
   </select>`;
 
-  view += `<select name ='area' onchange="areachange()" style="display:none">
+  view += `<select name ='area' style="display:none">
   <option value='0' selected>-- 선택 --</option>`
   for(var i=0; i< _area.length; i++)
   {
     view += `<option value ='${_area[i]}'>${_area[i]}</option>`;
   }
   view += `</select>
-  <select name ='area1' onchange="area1change()" style="display:none">
+  <select name ='area1' style="display:none">
   <option value='0' selected>-- 선택 --</option>`;
   for(var i=0; i < _area1.length; i++)
   {

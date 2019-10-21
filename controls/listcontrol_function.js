@@ -22,7 +22,8 @@ var g_userview; //user listbox ejs
 var g_area;   // listbox 지역
 var g_reason; // listbox 구역
 var g_station; //listbox 변전소
-function UserinfoAllUser(_res,callback)//모든 유저리스트 생성
+
+function UserinfoAllUser(_res)//모든 유저리스트 생성
 {
     userinfo.AllUser(50010000, function(err, list)
     {
