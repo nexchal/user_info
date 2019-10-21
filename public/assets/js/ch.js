@@ -23,6 +23,7 @@ function ch()
       {
         document.frm.action = `/insert`;
         document.frm.submit();
+        window.opener.location.reload();
       }
       else
       {

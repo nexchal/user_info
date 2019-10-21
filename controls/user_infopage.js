@@ -11,7 +11,7 @@ module.exports =
 
 		function ShowList(_logic_list) // 고장 유형 리스트 출력
 		{
-			g_fault_list = _logic_list ;
+			g_fault_list = _logic_list.rows ;
 		}
 
 		function ShowUser (_result) //선택 유저 정보 출력
@@ -41,7 +41,7 @@ module.exports =
 			{
 				id: g_emp_id, name : g_name, area : g_area, area1: g_location, station: g_station,
 				title: g_emp_num, tel: g_emp_tel,                                       // 유저 정보
-				all_fault_list: g_fault_list.rows, all_fault_length: g_fault_list.rows.length,  //	전체 고장 목록
+				all_fault_list: g_fault_list, all_fault_length: g_fault_list.length,  //	전체 고장 목록
 				user_fault: _logic_name.rows, length: _logic_name.rows.length,
 				checked: checked_num, checked_length : checked_num.length  // 유저 선택 고장 유형
 			});

@@ -102,7 +102,7 @@ module.exports = {
       conn.execute(`delete from test_userinfo where emp_tel='${_phonenumber}' `,_callback);
     });
   },
-  SelectUser:function(_checked, _selectuser, _userlist)
+  SelectUser:function(_checked, _selectuser, _userlist)           // 아중 선택 유저
   {
     console.log(`선택유저`+_selectuser);
     oracledb.getConnection(dbConfig,function(err, conn)
@@ -126,7 +126,7 @@ module.exports = {
           {
             sqlquery +=`'${_selectuser[i]}' or emp_tel=`
           }
-          console.log(sqlquery);
+          
         }
           conn.execute(`select * from test_userinfo where EMP_TEL=${sqlquery} `,_userlist);
         }

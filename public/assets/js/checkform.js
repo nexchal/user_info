@@ -61,6 +61,7 @@
           {
             document.frm.action = `/update_process`;
             document.frm.submit();
+            window.opener.location.reload();
           }
           else
           {
@@ -103,7 +104,11 @@
           }
         }
       }
-      function showPopup() { window.open("create", "a", "width=400, height=300, left=100, top=50"); }
+
+      function showPopup(select_num)
+      {
+        window.open(`/page/${select_num}`, "a", "width=850, height=400, left=100, top=50");
+      }
 
       function reload() {
         window.location.reload(true);

@@ -6,6 +6,10 @@ var faultlogic = require('../models/faultlogic.js');//고장판단로직
 var userinfo = require('../models/userinfo.js');//userinfo 테이블
 var list_userinfolist = require('../views/list_userinfolist.js');//유저리스트 테이블화
 var list_function = require(__dirname+'/listcontrol_function.js');//리스트 출력 함수js
+var fault_list_create = require('../views/Fault_list_create.js');//유저리스트 테이블화
+
+
+
 var bodyParser = require('body-parser');
 
 oracledb.autoCommit = true;
@@ -21,18 +25,43 @@ var button = fs.readFileSync(__dirname+'/../views/update_button.ejs')
 var g_page; //response print page 변수
 var g_data; //userlist 저장변수
 
-router.post('/update',function(_req, _res)
+faultlogic.select_logic(ShowFault);
+
+router.post('/update_process',function(_req, _res)
 {
+  console.log("update_process!!");
   var post = _req.body;
+  var check = post.check;
+  var checked = post.checked;
+  var id = post.id;
 
-  var check = post.check;//유저의 핸드폰정보
-  var checked = post.checked;//체크된 유저 수
+  console.log(post);
+  console.log(check);
+  console.log(checked);
 
-  SelectUserlist(checked, check, _res);//유저 리스트 출력
+  console.log(id);
+
 
 });
 
-function SelectUserlist(_checked, _check, _res)
+router.post('/update',function(_req, _res)
+{
+  console.log("update!!");
+  var post = _req.body;
+  var check = post.check;
+  var checked = post.checked;//체크된 유저 수
+  var id = post.id;
+  console.log(id);
+
+  SelectUserlist(checked, check, _res);//유저 리스트 출력
+});
+
+function ShowFault(_logic_list) // 고장 유형 리스트 출력
+{
+  g_fault_list2 = fault_list_create.list(_logic_list.rows);
+}
+
+function SelectUserlist(_checked, _check, _res,)
 {
   userinfo.SelectUser(_checked, _check, function(err,result)
   {
@@ -42,12 +71,14 @@ function SelectUserlist(_checked, _check, _res)
       userview: '',
       dbname: g_name,
       dbdata: g_data,
+      fault_list: g_fault_list2,
     });
     g_page = ejs.render(g_src,
     {
       frame_top: g_src_top,
       frame_body: bodydata,
-      frame_bottom: button
+      frame_bottom: button,
+
     });
     _res.writeHead(200);
     _res.end(g_page);

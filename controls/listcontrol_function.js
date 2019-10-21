@@ -34,12 +34,14 @@ function UserinfoAllUser(_res,callback)//모든 유저리스트 생성
         userview: g_userview,
         dbname: g_name,
         dbdata: g_data,
+        fault_list:''
       });
       g_page = ejs.render(g_src,
       {
         frame_top: g_src_top,
         frame_body: bodydata,
-        frame_bottom:g_controls
+        frame_bottom:g_controls,
+
       });
       _res.writeHead(200);
       _res.end(g_page);
@@ -60,6 +62,7 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
         userview: g_userview,
         dbname: g_name,
         dbdata: g_data,
+        fault_list:''
       });
 
       g_page = ejs.render(g_src,
@@ -90,6 +93,7 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
         userview: g_userview,
         dbname: g_name,
         dbdata: g_data,
+        fault_list:''
       });
 
       g_page = ejs.render(g_src,

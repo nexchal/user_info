@@ -12,6 +12,7 @@ list_function.Area();//리스트박스 생성
 router.get('/',function(_req, _res) //메인 페이지 유저 리스트 출력
 {
   //userinfo_alluser_print();
+  console.log("main !");
   list_function.UserinfoAllUser(_res);
 });
 
