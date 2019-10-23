@@ -10,7 +10,7 @@ module.exports = {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
       conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-       area_2 as 변전소, id FROM test_userinfo`,_userlist);
+       area_2 as 변전소, id FROM test_userinfo order by id desc`,_userlist);
     });
   },
   user_info: function(_usernum, _callback)
