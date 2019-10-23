@@ -24,6 +24,7 @@ router.post('/',function(_req, _res) //메인 페이지 유저 검색리스트 �
   var reason = post.area1;
   var station = post.station;
   var logic = post.logic;
+  
   console.log(view);
   switch (view)
   {
