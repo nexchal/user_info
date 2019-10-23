@@ -29,43 +29,46 @@ faultlogic.select_logic(ShowFault);
 
 router.post('/update_process',function(_req, _res)
 {
-  console.log("update_process!!");
+  console.log("----------update_process!!-----------");
   var post = _req.body;
-  var check = post.check;
-  var checked = post.checked;
-  var id = post.id;
-
-  console.log(post);
-  console.log(check);
-  console.log(checked);
-
-  console.log(id);
+  var emp_id = post.id;
+  var fault = post.fault;
+  var fault_count = fault.length
+  var emp_count = post.checked;
 
 
+ // 선택된 emp_id 의 값 받아와야함
+  console.log(emp_id);
+  console.log(fault);
+  console.log(fault.length);
+  console.log(emp_count);
+
+  var db = require('../models/delete_faultlogic.js');
+  db.multi_delete(_req, _res, fault,fault_count, emp_count,emp_id)
 });
 
 router.post('/update',function(_req, _res)
 {
   console.log("update!!");
   var post = _req.body;
-  var check = post.check;
+  var id = post.id
   var checked = post.checked;//체크된 유저 수
-  var id = post.id;
   console.log(id);
 
-  SelectUserlist(checked, check, _res);//유저 리스트 출력
+  SelectUserlist(checked, id, _res);//유저 리스트 출력
 });
+
 
 function ShowFault(_logic_list) // 고장 유형 리스트 출력
 {
   g_fault_list2 = fault_list_create.list(_logic_list.rows);
 }
 
-function SelectUserlist(_checked, _check, _res,)
+function SelectUserlist(_checked, _id, _res,)
 {
-  userinfo.SelectUser(_checked, _check, function(err,result)
+  userinfo.SelectUser(_checked, _id, function(err,result)
   {
-    g_data = list_userinfolist.UserinfoCreatelist(result.rows);
+    g_data = list_userinfolist.UpdateUserinfoCreatelist(result.rows);
     bodydata = ejs.render(g_src_body,
     {
       userview: '',

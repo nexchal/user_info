@@ -1,7 +1,7 @@
 
   function check_update()
     {
-      var checkbox = document.getElementsByName("check");
+      var checkbox = document.getElementsByName("id");
       console.log(checkbox);
       var checkboxleng = checkbox.length;
       var post
@@ -18,6 +18,10 @@
       if(checked == 0)
       {
         alert("수정할 항목이 체크되지 않았습니다.");
+      }
+      else if(checked == 1)
+      {
+        alert("수정할 항목을 2개 이상 선택하세요.");
       }
       else
       {
@@ -36,7 +40,7 @@
     }
     function update_process()
       {
-        var checkbox = document.getElementsByName("check");
+        var checkbox = document.getElementsByName("fault");
         console.log(checkbox);
         var checkboxleng = checkbox.length;
         var post
@@ -50,9 +54,9 @@
           }
         }
         document.frm.checked.value=checked;
-        if(checked == 0)
+        if(checked == 200000)
         {
-          alert("수정할 항목이 체크되지 않았습니다.");
+          alert("err.");
         }
         else
         {
@@ -71,7 +75,7 @@
       }
     function check_delete()
       {
-        var checkbox = document.getElementsByName("check");
+        var checkbox = document.getElementsByName("id");
         console.log(checkbox);
         var checkboxleng = checkbox.length;
         var count = document.checked;
