@@ -94,23 +94,23 @@ module.exports = {
         }
     });
   },
-  UserDelete: function(_phonenumber ,_callback)
+  UserDelete: function(_id ,_callback)
   {
-    console.log(`유저 삭제`+_phonenumber);
+    console.log(`유저 삭제`+_id);
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      conn.execute(`delete from test_userinfo where emp_tel='${_phonenumber}' `,_callback);
+      conn.execute(`delete from test_userinfo where id='${_id}' `,_callback);
     });
   },
-  SelectUser:function(_checked, _selectuser, _userlist)           // 아중 선택 유저
+  SelectUser:function(_checked, _id, _userlist)           // 아중 선택 유저
   {
-    console.log(`선택유저`+_selectuser);
+    console.log(`선택유저`+_id);
     oracledb.getConnection(dbConfig,function(err, conn)
     {
       if(_checked ==1)
       {
-        console.log(`단일 유저`+_selectuser);
-        conn.execute(`select * from test_userinfo where EMP_TEL='${_selectuser}' `,_userlist);
+        console.log(`단일 유저`+_id);
+        conn.execute(`select * from test_userinfo where id='${_id}' `,_userlist);
       }
       else
       {
@@ -120,15 +120,15 @@ module.exports = {
         {
           if(i+1 == _checked)
           {
-            sqlquery +=`'${_selectuser[i]}'`
+            sqlquery +=`'${_id[i]}'`
           }
           else
           {
-            sqlquery +=`'${_selectuser[i]}' or emp_tel=`
+            sqlquery +=`'${_id[i]}' or id=`
           }
 
         }
-          conn.execute(`select * from test_userinfo where EMP_TEL=${sqlquery} `,_userlist);
+          conn.execute(`select * from test_userinfo where id=${sqlquery} `,_userlist);
         }
     });
   },

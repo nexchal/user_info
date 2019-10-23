@@ -49,8 +49,8 @@ router.post('/',function(_req, _res) //메인 페이지 유저 검색리스트 �
 router.post('/user_delete',function(_req,_res)//체크박스 삭제
 {
   var post = _req.body;
-  var check = post.check;
-  userinfo.UserDelete(check ,function(err, result)
+  var id = post.id;
+  userinfo.UserDelete(id ,function(err, result)
   {
     if(err)
     {
@@ -79,20 +79,14 @@ router.post('/insert',function(_req,_res)
   var ch_value = post.check; // 채크된 고장유형 값
   var ch_count = post.checked; // 체크된 갯수
   var emp_id = post.emp_id; // 수정 될 사용자 id값
-  var emp_num = post.title; // 이동할 페이지
+  var emp_num = "/page/" + post.title; // 이동할 페이지
 
   console.log("값"+ch_value);
   console.log("체크된 갯수:"+ch_count);
 
-  var db = require('../models/delete_userinfo.js');
+  var db = require('../models/delete_faultlogic.js');
   db.delete(_req, _res, ch_value, ch_count,emp_id, emp_num);
  });
-
-
-
-
-
-
 
 
 module.exports = router;

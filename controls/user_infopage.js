@@ -31,12 +31,23 @@ module.exports =
 		{
 			var arr_logic = new Array;
 			var logic_number = _logic_name.rows;
-			for(var q = 0; q < logic_number.length; q++)
+			var val_length;
+			if(logic_number.length === 0)
 			{
-				arr_logic.push(logic_number[q][1])
+				val_length = 1 ;
+				arr_logic = '';
 				checked_num = arr_logic;
 			}
-
+			else
+			{
+				val_length = logic_number.length;
+				for(var q = 0; q < val_length; q++)
+				{
+					arr_logic.push(logic_number[q][1]);
+					checked_num = arr_logic;
+				}
+			}
+			
 			_res.render('title',
 			{
 				id: g_emp_id, name : g_name, area : g_area, area1: g_location, station: g_station,
