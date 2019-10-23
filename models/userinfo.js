@@ -49,7 +49,7 @@ module.exports = {
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
              area_2 as 변전소, id FROM test_userinfo where area='${_area}'`,_userlist);
           }
-          else if(area =='0')
+          else if(_area =='0')
           {
             console.log(`구역 선택`);
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
@@ -126,7 +126,7 @@ module.exports = {
           {
             sqlquery +=`'${_selectuser[i]}' or emp_tel=`
           }
-          
+
         }
           conn.execute(`select * from test_userinfo where EMP_TEL=${sqlquery} `,_userlist);
         }
