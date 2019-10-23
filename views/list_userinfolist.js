@@ -13,7 +13,7 @@ function UserinfoCreatelist(_list)//유저리스트 생성
             <td class = "name">${_list[i][4]}</td>
             <td class = "name">${_list[i][5]}</td>
             <td class = "name">${_list[i][6]}</td><input type = "hidden" value = "${_list[i][6]}" name = "id">
-            <td><input type ="checkbox" name="check" value = "${_list[i][6]}"></td>
+            <td><input type ="checkbox" name="id" value = "${_list[i][6]}"></td>
           </tr></div>`;
       }
       return data;
