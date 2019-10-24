@@ -1,5 +1,6 @@
 function createview(_area,_area1,_station, _logicname)//유저 리스트 보기 리스트박스
 {
+
   var view=`<select name='view' onchange="viewchange()">
       <option value='0' selected>-- 선택 --</option>
       <option value='all'>전체</option>
@@ -36,6 +37,32 @@ function createview(_area,_area1,_station, _logicname)//유저 리스트 보기 
   return view;
 }
 
+function CreateCategory(_area,_area1,_station)
+{
+  var view=``;
+  view += `<select name ='area'>
+  <option value='0' selected>-- 선택 --</option>`
+  for(var i=0; i< _area.length; i++)
+  {
+    view += `<option value ='${_area[i]}'>${_area[i]}</option>`;
+  }
+  view += `</select>
+  <select name ='reason'>
+  <option value='0' selected>-- 선택 --</option>`;
+  for(var i=0; i < _area1.length; i++)
+  {
+    view += `<option value ='${_area1[i]}'>${_area1[i]}</option>`;
+  }
+  view += `</select><select name ='station'>
+  <option value='0' selected>-- 선택 --</option>`;
+  for(var i = 0; i < _station.length; i++)
+  {
+    view += `<option value ='${_station[i]}'>${_station[i]}</option>`;
+  }
+  view += `</select>`;
+  return view;
+}
 module.exports ={
   createview,
+  CreateCategory
 }

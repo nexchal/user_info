@@ -2,6 +2,8 @@
       function filter()
       {
         var value, name, item, i;
+        var count=0;
+        var $table = $(this);
         value = document.getElementById("value").value.toUpperCase();
         item = document.getElementsByClassName("item");
 
@@ -12,6 +14,7 @@
           {
             if(name[j].innerHTML.toUpperCase().indexOf(value) > -1)
             {
+
               item[i].style.visibility ="visible";
               break;
             }
@@ -21,4 +24,11 @@
             }
           }
         }
+      }
+
+      function search()
+      {
+        value=document.getElementById("value");
+        item = document.getElementsByClassName("item");
+        
       }

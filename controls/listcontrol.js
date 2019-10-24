@@ -50,7 +50,8 @@ router.post('/user_delete',function(_req,_res)//체크박스 삭제
 {
   var post = _req.body;
   var id = post.id;
-  userinfo.UserDelete(id ,function(err, result)
+  var checked = post.checked;
+  userinfo.UserDelete(id , checked, function(err, result)
   {
     if(err)
     {
@@ -58,8 +59,7 @@ router.post('/user_delete',function(_req,_res)//체크박스 삭제
       throw err;
     }
     console.log(result);
-    _res.writeHead(302, {Location: `/`});
-    _res.end();
+    _res.end(`<script>location.href="/"</script>`);
   });
 });
 
