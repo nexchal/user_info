@@ -17,6 +17,7 @@ var g_controls=fs.readFileSync(__dirname+'/../views/list_button.ejs','utf8');//�
 var g_userview_listbox = fs.readFileSync(__dirname+'/../views/list_listboxfunction.ejs','utf8');//리스트박스 ejs
 var g_name = fs.readFileSync(__dirname+'/../views/list_column.ejs','utf8');//user data column name
 var g_search = fs.readFileSync(__dirname+'/../views/list_search.ejs','utf8');
+var g_insertform = fs.readFileSync(__dirname+'/../views/form.ejs', 'utf8');
 var g_page; //response print page 변수
 var g_data; //userlist 저장변수
 var g_userview; //user listbox ejs
@@ -140,6 +141,8 @@ function Listbox(_station)//사용자 보기 리스트 박스 생성
       });
  });
 }
+
+
 
 module.exports={
   UserinfoAllUser,

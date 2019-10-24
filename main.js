@@ -5,7 +5,7 @@ var ejs = require('ejs');
 var bodyParser= require('body-parser');
 
 var listcontrol = require('./controls/listcontrol.js');
-//var cbrouter = require('./models/cbrouter.js');
+var insertuser = require('./controls/insertuser.js');
 var updatecontrol = require('./controls/updatecontrol.js');
 //var add_fault = require('./models/add_fault.js');
 
@@ -17,6 +17,7 @@ app.set('view engine','ejs'); // ejs사용
 
 //app.use('/',cbrouter);
 app.use('/',listcontrol);
+app.use('/',insertuser);
 app.use('/',updatecontrol);
 //app.use('/',add_fault);
 app.use(express.static('public'));  // 정적파일 사용하기

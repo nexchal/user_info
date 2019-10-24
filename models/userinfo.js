@@ -132,4 +132,12 @@ module.exports = {
         }
     });
   },
+  Insert:function(_emp_no, _new_name, _new_tel, _area, _reason, _station, callback){
+			var oracledb = require('oracledb');
+			var dbConfig = require('./../config/dbconfig2.js');
+      oracledb.getConnection(dbConfig,function(err, conn)
+      {
+        conn.execute(`insert into test_userinfo VALUES ('${_emp_no}','${_new_name}','${_new_tel}','${_area}','${_reason}','${_station}',tmp_seq.NEXTVAL)`, callback);
+      });
+    },
 }

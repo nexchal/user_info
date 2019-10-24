@@ -117,3 +117,8 @@
       function reload() {
         window.location.reload(true);
       }
+
+      function InsertPopup()
+      {
+        window.open(`/insertuser`, "a", "width=520, height=300, left=100, top=50");
+      }
