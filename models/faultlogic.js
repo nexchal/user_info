@@ -34,4 +34,27 @@ module.exports = {
       });
     });
   },
+
+  multi_select_id: function(_emp_id,_callback)  // 선택유저가 가지고있는 고장목록
+  {
+    console.log("다중 검색 도착");
+    var fault_number = "";
+    oracledb.getConnection(dbConfig,function(err, conn)
+    {
+      str = "select FAULT_LOGICID FROM test_err_type where ";
+      for(var i = 0; i<_emp_id.length; i++)
+      {
+        str = str + " id = "+ _emp_id[i] ;
+        if( i == _emp_id.length-1)
+        {
+          continue;
+        }
+        str = str + " or";
+      }
+        conn.execute(str,function (err, logic_name)
+        {
+          _callback(logic_name.rows);
+        });
+      });
+    }
   }

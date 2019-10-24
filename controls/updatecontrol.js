@@ -15,7 +15,7 @@ var bodyParser = require('body-parser');
 oracledb.autoCommit = true;
 var router = express.Router();
 //페이지 불러오기
-var g_src = fs.readFileSync(__dirname+'/../views/frame_main.ejs', 'utf8');//main frame
+var g_src = fs.readFileSync(__dirname+'/../views/updatepage.ejs', 'utf8');//main frame
 var g_src_top = fs.readFileSync(__dirname+'/../views/frame_top.ejs', 'utf8');//top frame
 var g_src_body = fs.readFileSync(__dirname+'/../views/frame_body.ejs', 'utf8');//body frame
 var g_src_bottom = fs.readFileSync(__dirname+'/../views/frame_bottom.ejs', 'utf8');//bottom frame
@@ -24,7 +24,8 @@ var g_name = fs.readFileSync(__dirname+'/../views/list_column.ejs','utf8');//use
 var button = fs.readFileSync(__dirname+'/../views/update_button.ejs')
 var g_page; //response print page 변수
 var g_data; //userlist 저장변수
-
+var checked_num;
+var g_checked;
 faultlogic.select_logic(ShowFault);
 
 router.post('/update_process',function(_req, _res)
@@ -34,7 +35,7 @@ router.post('/update_process',function(_req, _res)
   var emp_id = post.id;
   var fault = post.fault;
   var emp_count = post.checked;
-  
+
 
  // 선택된 emp_id 의 값 받아와야함
   console.log(emp_id);
@@ -48,15 +49,22 @@ router.post('/update_process',function(_req, _res)
 
 router.post('/update',function(_req, _res)
 {
+
   console.log("update!!");
-  var post = _req.body;
-  var id = post.id
-  var checked = post.checked;//체크된 유저 수
-  console.log(id);
+  res = _res;
+  post = _req.body;
+  id = post.id
+  checked = post.checked;//체크된 유저 수
+  faultlogic.multi_select_id(id,Test)
+  ;//유저 리스트 출력
 
-  SelectUserlist(checked, id, _res);//유저 리스트 출력
 });
-
+function Test(_good)
+{
+  g_checked = _good;
+  g_checked_length = _good.lengthl
+  SelectUserlist(checked, id, res)
+}
 
 function ShowFault(_logic_list) // 고장 유형 리스트 출력
 {
@@ -65,6 +73,7 @@ function ShowFault(_logic_list) // 고장 유형 리스트 출력
 
 function SelectUserlist(_checked, _id, _res,)
 {
+  console.log(g_checked);
   userinfo.SelectUser(_checked, _id, function(err,result)
   {
     g_data = list_userinfolist.UpdateUserinfoCreatelist(result.rows);
@@ -75,6 +84,8 @@ function SelectUserlist(_checked, _id, _res,)
       dbname: g_name,
       dbdata: g_data,
       fault_list: g_fault_list2,
+      hidden_check: g_checked,
+      hidden_check_length: g_checked.length
     });
     g_page = ejs.render(g_src,
     {
@@ -88,11 +99,4 @@ function SelectUserlist(_checked, _id, _res,)
   });
 }
 
-function FaultLogic()
-{
-  faultlogic.LogicName(function(err,result)
-  {
-
-  });
-}
 module.exports = router;

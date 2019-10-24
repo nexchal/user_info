@@ -117,3 +117,37 @@
       function reload() {
         window.location.reload(true);
       }
+      function test()
+      {
+        show = document.getElementsByName("fault"); //상세보기 페이지 내에 체크박스 이름은 check 수정페이지 내에 체크박스 이름은 fault
+        val = document.getElementsByName("hidden_check");
+
+        for(var i = 0; i < val.length; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
+        {
+          nick = val[i].value-1;
+          show[nick].checked=true;
+        }
+      }
+      function allcheck() //전체체크 , 해제
+        {
+
+          show_box = document.getElementsByName("fault");
+          all = document.getElementsByName("all");
+
+          if(all.checked == 1 )
+          {
+            all.checked = false;
+            for(var i = 0; i < 25; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
+            {
+              show_box[i].checked=true;
+            }
+          }
+          else
+          {
+            all.checked = true;
+            for(var i = 0; i < 25; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
+            {
+              show_box[i].checked=false;
+            }
+          }
+        }

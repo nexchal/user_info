@@ -22,4 +22,10 @@
     </tbody>
 </table>
     <%- fault_list %>
+    <div style = "display:none;">
+    <input type = "checkbox" name = "all" >
+    <% for( var i = 0 ; i < hidden_check_length; i++) { %>
+    <input type = "checkbox" name = "hidden_check" value ="<%- hidden_check[i] %>"> <%- hidden_check[i] %>
+    <% } %>
+    </div>
 </form>

@@ -33,23 +33,23 @@ function ch()
   }
 
   function myFunction()
-  {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none")
-    {
-      x.style.display = "block";
-    }
-    else
-    {
-      x.style.display = "none";
-    }
+   {
+     var x = document.getElementById("myDIV");
+     if (x.style.display === "none")
+     {
+       x.style.display = "block";
+     }
+     else
+     {
+       x.style.display = "none";
+     }
 
-    show_box = document.getElementsByName("check");
-    val = document.getElementsByName("user_selected_value");
+     show_box = document.getElementsByName("check"); //상세보기 페이지 내에 체크박스 이름은 check 임
+     val = document.getElementsByName("user_selected_value");
 
-    for(var i = 0; i < val.length; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
-    {
-      nick = val[i].value-1
-     show_box[nick].checked=true;
-    }
-  }
+     for(var i = 0; i < val.length; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
+     {
+       nick = val[i].value-1
+      show_box[nick].checked=true;
+     }
+   }

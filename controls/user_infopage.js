@@ -47,7 +47,7 @@ module.exports =
 					checked_num = arr_logic;
 				}
 			}
-			
+
 			_res.render('title',
 			{
 				id: g_emp_id, name : g_name, area : g_area, area1: g_location, station: g_station,

@@ -37,7 +37,9 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
         search:g_search,
         dbname: g_name,
         dbdata: g_data,
-        fault_list:''
+        fault_list:'',
+        hidden_check: '',
+        hidden_check_length: ''
       });
       g_page = ejs.render(g_src,
       {
