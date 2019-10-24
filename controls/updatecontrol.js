@@ -33,9 +33,8 @@ router.post('/update_process',function(_req, _res)
   var post = _req.body;
   var emp_id = post.id;
   var fault = post.fault;
-  var fault_count = fault.length
   var emp_count = post.checked;
-
+  
 
  // 선택된 emp_id 의 값 받아와야함
   console.log(emp_id);
@@ -44,7 +43,7 @@ router.post('/update_process',function(_req, _res)
   console.log(emp_count);
 
   var db = require('../models/delete_faultlogic.js');
-  db.multi_delete(_req, _res, fault,fault_count, emp_count,emp_id)
+  db.multi_delete(_req, _res, fault, emp_count,emp_id)
 });
 
 router.post('/update',function(_req, _res)

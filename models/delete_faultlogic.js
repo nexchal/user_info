@@ -32,12 +32,13 @@ module.exports =
 		_res.end();
  	},
 
-	multi_delete: function(_req, _res, _fault, _fault_count, _emp_count,_emp_id)
+	multi_delete: function(_req, _res, _fault, _emp_count,_emp_id)
 	{
 		console.log("여러명 수정");
+		console.log(_emp_count);
 		oracledb.getConnection(dbConfig,function(err, conn)
     {
-			if(_fault_count === '1')
+			if(_emp_count === '1')
 			{
 				for(var i = 0; i < _emp_id.length; i++)
 				{
@@ -61,7 +62,7 @@ module.exports =
 				}
 	      for(var i = 0; i < _emp_id.length; i++)
 	      {
-					for(var j = 0; j < _fault_count; j++)
+					for(var j = 0; j < _emp_count; j++)
 		      {
 		      	conn.execute(`insert into TEST_ERR_TYPE values(${_fault[j]},${_emp_id[i]})`, function (err, result1)
 		        {
