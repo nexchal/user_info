@@ -29,7 +29,7 @@ module.exports = {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
       conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-       area_2 as 변전소, id FROM test_userinfo where id=(select id from test_err_type where fault_logicid=(select logicid from faultlogic where logicname='${_logic}'))`,_userlist);
+       area_2 as 변전소, id FROM test_userinfo where id in (select id from test_err_type where fault_logicid=(select logicid from faultlogic where logicname='${_logic}'))`,_userlist);
     });
   },
   UserArea: function(_area, _reason, _station, _userlist)
