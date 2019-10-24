@@ -36,7 +36,8 @@ router.post('/create_process',function(_req, _res)
 
   userinfo.Insert(emp_no, new_name, new_tel, area, reason, station, function(err)
   {
-    _res.end(`<script>alert("추가 완료!", charset="utf-8");window.close()</script>`);
+
+    _res.end(`<script>opener.parent.location.reload(true);alert("create sucess!");window.close()</script>`);
   });
 });
 
