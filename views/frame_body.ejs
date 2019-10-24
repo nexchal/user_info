@@ -3,14 +3,14 @@
 <%- userview %>
 <table  class="tbList paginated">
   <div class="pagination" id="pagination"></div>
-  보여줄 리스트 개수
+  보여줄 리스트 개수 :
       <select name="list" onchange="listchange()">
       <option value="5">5</option>
       <option value="10">10</<option>
         <option value="15">15</<option>
           <option value="20">20</<option>
         </select>
-        검색 : <input onkeyup="filter()" type="text" id="value" placeholder="Type to Search">
+        <%- search %>
     <thead>
           <tr>
             <%- dbname %>

@@ -72,6 +72,7 @@ function SelectUserlist(_checked, _id, _res,)
     bodydata = ejs.render(g_src_body,
     {
       userview: '',
+      search:'',
       dbname: g_name,
       dbdata: g_data,
       fault_list: g_fault_list2,

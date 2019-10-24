@@ -16,6 +16,7 @@ var g_src_bottom = fs.readFileSync(__dirname+'/../views/frame_bottom.ejs', 'utf8
 var g_controls=fs.readFileSync(__dirname+'/../views/list_button.ejs','utf8');//컨트롤 버튼 ejs
 var g_userview_listbox = fs.readFileSync(__dirname+'/../views/list_listboxfunction.ejs','utf8');//리스트박스 ejs
 var g_name = fs.readFileSync(__dirname+'/../views/list_column.ejs','utf8');//user data column name
+var g_search = fs.readFileSync(__dirname+'/../views/list_search.ejs','utf8');
 var g_page; //response print page 변수
 var g_data; //userlist 저장변수
 var g_userview; //user listbox ejs
@@ -33,6 +34,7 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
       bodydata = ejs.render(g_src_body,
       {
         userview: g_userview,
+        search:g_search,
         dbname: g_name,
         dbdata: g_data,
         fault_list:''
@@ -56,11 +58,13 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
     {
       var count;
       var bodydata;
-
+      console.log(list);
       g_data = list_userinfolist.UserinfoCreatelist(list.rows);
+
       var bodydata = ejs.render(g_src_body,
       {
         userview: g_userview,
+        search:g_search,
         dbname: g_name,
         dbdata: g_data,
         fault_list:''
@@ -92,6 +96,7 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
       var bodydata = ejs.render(g_src_body,
       {
         userview: g_userview,
+        search:g_search,
         dbname: g_name,
         dbdata: g_data,
         fault_list:''
