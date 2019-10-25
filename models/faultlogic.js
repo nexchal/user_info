@@ -13,13 +13,13 @@ module.exports = {
     });
   },
 
-  select_id: function(_emp_id,_callback)  // 선택유저가 가지고있는 고장목록
+  select_id: function(_emp_id, _res, _callback)  // 선택유저가 가지고있는 고장목록
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
       conn.execute(`select LOGICNAME,LOGICID from FAULTLOGIC where LOGICID in (select fault_logicid from test_err_type where id = ${_emp_id})`,function (err, logic_name)
       {
-          _callback(logic_name);
+          _callback(_res, logic_name);
       });
     });
   },
