@@ -31,7 +31,7 @@ function createview(_area,_area1,_station, _logicname)//유저 리스트 보기 
   <option value='0' selected>-- 선택 --</option>`;
   for(var i=0; i< _logicname.length; i++)
   {
-    view += `<option value ='${_logicname[i]}'>${_logicname[i]}</option>`;
+    view += `<option value ='${_logicname[i][1]}'>${_logicname[i][1]}</option>`;
   }
   view += `</select><input type="button" value="검색" onclick="userview()">`;
   return view;

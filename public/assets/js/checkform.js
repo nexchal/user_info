@@ -117,7 +117,7 @@
       function reload() {
         window.location.reload(true);
       }
-<<<<<<< HEAD
+
       function test()
       {
         show = document.getElementsByName("fault"); //상세보기 페이지 내에 체크박스 이름은 check 수정페이지 내에 체크박스 이름은 fault
@@ -152,10 +152,9 @@
             }
           }
         }
-=======
+
 
       function InsertPopup()
       {
         window.open(`/insertuser`, "a", "width=520, height=300, left=100, top=50");
       }
->>>>>>> 709f81a4d796362ef5127d7c2f0d704486ad21d9

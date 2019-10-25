@@ -70,7 +70,9 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
         search:g_search,
         dbname: g_name,
         dbdata: g_data,
-        fault_list:''
+        fault_list:'',
+        hidden_check: '',
+        hidden_check_length: ''
       });
 
       g_page = ejs.render(g_src,
@@ -102,7 +104,9 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
         search:g_search,
         dbname: g_name,
         dbdata: g_data,
-        fault_list:''
+        fault_list:'',
+        hidden_check: '',
+        hidden_check_length: ''
       });
 
       g_page = ejs.render(g_src,
@@ -133,15 +137,16 @@ function Station(_reason)
 function Listbox(_station)//사용자 보기 리스트 박스 생성
 {
     g_station=_station;
-    faultlogic.LogicName(function(_err,_logicname)
+    faultlogic.select_logic(function(_logic)
     {
-      g_faultlogic = _logicname.rows;
+
+      g_faultlogic=_logic.rows;
       create_userview = list_createlistbox.createview(g_area, g_reason, g_station, g_faultlogic);
       g_userview=ejs.render(g_userview_listbox,
       {
        listbox:create_userview
       });
- });
+    });
 }
 
 
