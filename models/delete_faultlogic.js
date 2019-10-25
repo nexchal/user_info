@@ -16,13 +16,13 @@ module.exports =
       {
         if(ch_count === '1')
         {
-          conn.execute(`insert into TEST_ERR_TYPE values(${ch_value},${emp_id})`);
+          conn.execute(`insert into TEST_ERR_TYPE values(${ch_value},${emp_id})`, function (err, result0){});
         }
         else
         {
           for(var i = 0; i < ch_count; i++)
           {
-            conn.execute(`insert into TEST_ERR_TYPE values(${ch_value[i]},${emp_id})`);
+            conn.execute(`insert into TEST_ERR_TYPE values(${ch_value[i]},${emp_id})`, function (err, result1){});
           }
         }
       });
@@ -73,5 +73,5 @@ module.exports =
 	  });
 		_res.writeHead(302, {Location: "/"});
 		_res.end();
-	}
+	},
 }

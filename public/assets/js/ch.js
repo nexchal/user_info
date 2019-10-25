@@ -12,9 +12,9 @@ function ch()
       }
     }
     document.frm.checked.value=checked;
-    if(checked == 0)
+    if(checked == 20000)
     {
-      alert("수정할 항목이 체크되지 않았습니다.");
+      alert("err");
     }
     else
     {

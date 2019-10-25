@@ -137,16 +137,15 @@ function Station(_reason)
 function Listbox(_station)//사용자 보기 리스트 박스 생성
 {
     g_station=_station;
-    faultlogic.select_logic(function(_logic)
+    faultlogic.select_logic(function(_logicname)
     {
-
-      g_faultlogic=_logic.rows;
+      g_faultlogic = _logicname.rows;
       create_userview = list_createlistbox.createview(g_area, g_reason, g_station, g_faultlogic);
       g_userview=ejs.render(g_userview_listbox,
       {
        listbox:create_userview
       });
-    });
+ });
 }
 
 

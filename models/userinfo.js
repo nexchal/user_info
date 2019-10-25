@@ -13,13 +13,13 @@ module.exports = {
        area_2 as 변전소, id FROM test_userinfo order by id desc`,_userlist);
     });
   },
-  user_info: function(_usernum, _res, _callback)
+  user_info: function(_usernum, _callback)
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
       conn.execute(`SELECT emp_name,area,area_1,area_2,id,emp_tel,emp_no FROM test_userinfo where emp_no = '${_usernum}'`,  function (err, result)
       {
-        _callback(_res, result);
+        _callback(result);
       });
     });
   },
