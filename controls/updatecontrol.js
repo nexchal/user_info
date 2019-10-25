@@ -36,12 +36,7 @@ router.post('/update_process',function(_req, _res)
   var fault = post.fault;
   var emp_count = post.checked;
 
-
  // 선택된 emp_id 의 값 받아와야함
-  console.log(emp_id);
-  console.log(fault);
-  console.log(fault.length);
-  console.log(emp_count);
 
   var db = require('../models/delete_faultlogic.js');
   db.multi_delete(_req, _res, fault, emp_count,emp_id)
@@ -49,20 +44,17 @@ router.post('/update_process',function(_req, _res)
 
 router.post('/update',function(_req, _res)
 {
-
   console.log("update!!");
   res = _res;
   post = _req.body;
   id = post.id
   checked = post.checked;//체크된 유저 수
-  faultlogic.multi_select_id(id,Test)
-  ;//유저 리스트 출력
-
+  faultlogic.multi_select_id(id,MultiChecked);
 });
-function Test(_good)
+function MultiChecked(_number)
 {
-  g_checked = _good;
-  g_checked_length = _good.lengthl
+  g_checked = _number;
+  g_checked_length = _number.lengthl
   SelectUserlist(checked, id, res)
 }
 
