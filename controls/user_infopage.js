@@ -29,7 +29,6 @@ router.post('/insert',function(_req,_res)
   console.log("값"+ch_value);
   console.log("체크된 갯수:"+ch_count);
 
-
   delete_faultlogic.delete(_req, _res, ch_value, ch_count,emp_id, emp_num);
  });
 
@@ -46,6 +45,7 @@ router.post('/insert',function(_req,_res)
 
   function ShowUser (_res, _result) //선택 유저 정보 출력
   {
+    console.log(_result.rows);
     g_name = _result.rows[0][0];
     g_area = _result.rows[0][1];
     g_location = _result.rows[0][2];
