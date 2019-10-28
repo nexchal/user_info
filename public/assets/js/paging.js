@@ -1,14 +1,12 @@
-var pagesu = 10;  //페이지 번호 갯수
-var currentPage = 0;
-var numPerPage;  //목록의 수
-var $table;
-var pagination;
 function page(_view)
 {
  $('table.paginated').each(function() {
-   pagination = $("#pagination");
-    $table = $(this);
-   numPerPage = _view;
+  var pagesu = 10;  //페이지 번호 갯수
+  var currentPage = 0;
+  var numPerPage = _view;  //목록의 수
+  var $table = $(this);
+  var pagination = $("#pagination");
+
   //length로 원래 리스트의 전체길이구함
   var numRows = $table.find('tbody tr').length;
   //Math.ceil를 이용하여 반올림
@@ -88,7 +86,7 @@ function page(_view)
 
    for (var page = nowp ; page < endp; page++)
    {
-    $(`<span class="pageNum" name="pageNum" value="${page + 1}"> <a href="#">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
+    $(`<span class="pageNum"> <a href="#">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
     {
 
      currentPage = event.data['newPage'];

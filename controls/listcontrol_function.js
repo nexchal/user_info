@@ -29,7 +29,7 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
 {
     userinfo.AllUser(50010000, function(err, list)
     {
-      var bodydata; // html body 부분에 해당하는 데이터 변수
+      var bodydata;
       g_data = list_userinfolist.UserinfoCreatelist(list.rows);
 
       bodydata = ejs.render(g_src_body,
@@ -120,27 +120,27 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
       _res.end(g_page);
     });
 }
-function Area() // 지역 정보 콜백
+function Area()
 {
   scadastation.AreaSearch(5009999,Reason);//scadastation 계통
 }
-function Reason(_area) // 지역정보 받아서 전역변수에 넣어주고 구역 정보 콜백
+function Reason(_area)
 {
   g_area = _area;
-  scadastation.Reason168(5009998,Station);//scadastation 구역
+  scadastation.	Reason168(5009998,Station);//scadastation 구역
 }
-function Station(_reason) // 구역정보 받아서 전역변수에 넣어주고 변전소 정보 콜백
+function Station(_reason)
 {
   g_reason=_reason;
   scadastation.Station(5009997, Listbox);// scadastation 변전소
 }
 function Listbox(_station)//사용자 보기 리스트 박스 생성
-{                         //변전소 정보 전역변수에 넣어주고
+{
     g_station=_station;
-    faultlogic.SelectLogic(function(_logicname) // fault logic 불러오기 지역, 구역, 변전소, 고장판단로직 정보를 리스트박스 생성 모듈로 넘기기
+    faultlogic.SelectLogic(function(_logicname)
     {
       g_faultlogic = _logicname.rows;
-      create_userview = list_createlistbox.CreateView(g_area, g_reason, g_station, g_faultlogic);
+      create_userview = list_createlistbox.Createview(g_area, g_reason, g_station, g_faultlogic);
       g_userview=ejs.render(g_userview_listbox,
       {
        listbox:create_userview

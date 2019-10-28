@@ -1,27 +1,34 @@
-function filter()
-{
-  var value, name, item, i;
-  var page=document.frm.list.value;
-  value = document.getElementById("value").value.toUpperCase();
-  item = document.getElementsByClassName("item");
-  var $table = $(this);
-  $table.find('tbody tr').show();
-  for(i=0;i<item.length;i++)
-  {
-    name = item[i].getElementsByClassName("name");
 
-      for(var j=0; j < name.length; j++)
+      function filter()
       {
-        if(name[j].innerHTML.toUpperCase().indexOf(value) > -1)
-        {
+        var value, name, item, i;
+        var count=0;
+        var $table = $(this);
+        value = document.getElementById("value").value.toUpperCase();
+        item = document.getElementsByClassName("item");
 
-            item[i].style.visibility ="visible";
-            break;
-        }
-        else
+        for(i=0;i<item.length;i++)
         {
-            item[i].style.visibility = "collapse";
+          name = item[i].getElementsByClassName("name");
+          for(var j=0; j < name.length; j++)
+          {
+            if(name[j].innerHTML.toUpperCase().indexOf(value) > -1)
+            {
+
+              item[i].style.visibility ="visible";
+              break;
+            }
+            else
+            {
+              item[i].style.visibility = "collapse";
+            }
+          }
         }
       }
-  }
-}
+
+      function search()
+      {
+        value=document.getElementById("value");
+        item = document.getElementsByClassName("item");
+        
+      }

@@ -1,4 +1,4 @@
-function CreateView(_area,_area1,_station, _logicname)//유저 리스트 보기 리스트박스
+function Createview(_area,_area1,_station, _logicname)//유저 리스트 보기 리스트박스
 {
 
   var view=`<select name='view' onchange="ViewChange()">
@@ -15,7 +15,7 @@ function CreateView(_area,_area1,_station, _logicname)//유저 리스트 보기 
     view += `<option value ='${_area[i]}'>${_area[i]}</option>`;
   }
   view += `</select>
-  <select name ='reason' style="display:none">
+  <select name ='area1' style="display:none">
   <option value='0' selected>-- 선택 --</option>`;
   for(var i=0; i < _area1.length; i++)
   {
@@ -63,6 +63,6 @@ function CreateCategory(_area,_area1,_station)
   return view;
 }
 module.exports ={
-  CreateView,
+  Createview,
   CreateCategory
 }

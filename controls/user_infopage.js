@@ -24,7 +24,7 @@ router.post('/insert',function(_req,_res)
   var ch_value = post.check; // 채크된 고장유형 값
   var ch_count = post.checked; // 체크된 갯수
   var emp_id = post.emp_id; // 수정 될 사용자 id값
-  var emp_num = "/page/" + post.view_details; // 이동할 페이지
+  var emp_num = "/page/" + post.title; // 이동할 페이지
 
   console.log("값"+ch_value);
   console.log("체크된 갯수:"+ch_count);
@@ -45,7 +45,7 @@ router.post('/insert',function(_req,_res)
 
   function ShowUser (_res, _result) //선택 유저 정보 출력
   {
-    console.log(_result);
+    console.log(_result.rows);
     g_name = _result.rows[0][0];
     g_area = _result.rows[0][1];
     g_location = _result.rows[0][2];
@@ -56,7 +56,6 @@ router.post('/insert',function(_req,_res)
 
     faultlogic.SelectId(g_emp_id, _res, ShowFault); // 선택유저가 가지고있는 고장목록
   }
-
   function ShowFault(_res, _logic_name)  // 선택유저가 가지고있는 고장목록
   {
     var arr_logic = new Array;
