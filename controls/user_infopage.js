@@ -24,18 +24,18 @@ router.post('/insert',function(_req,_res)
   var ch_value = post.check; // 채크된 고장유형 값
   var ch_count = post.checked; // 체크된 갯수
   var emp_id = post.emp_id; // 수정 될 사용자 id값
-  var emp_num = "/page/" + post.title; // 이동할 페이지
+  var emp_num = "/page/" + post.view_details; // 이동할 페이지
 
   console.log("값"+ch_value);
   console.log("체크된 갯수:"+ch_count);
 
-  delete_faultlogic.delete(_req, _res, ch_value, ch_count,emp_id, emp_num);
+  delete_faultlogic.Delete(_req, _res, ch_value, ch_count,emp_id, emp_num);
  });
 
 	function Html(_req, _res, _usernum) // _usernum 은 메인 페이지에서 넘어온 값
 	{
-		faultlogic.select_logic(ShowList); // 고장유형 목록 검색
-		userinfo.user_info(_usernum, _res, ShowUser); //선택 유저 정보 출력
+		faultlogic.SelectLogic(ShowList); // 고장유형 목록 검색
+		userinfo.UserInfo(_usernum, _res, ShowUser); //선택 유저 정보 출력
 	}
 
   function ShowList(_logic_list) // 고장 유형 리스트 출력
@@ -45,7 +45,7 @@ router.post('/insert',function(_req,_res)
 
   function ShowUser (_res, _result) //선택 유저 정보 출력
   {
-    console.log(_result.rows);
+    console.log(_result);
     g_name = _result.rows[0][0];
     g_area = _result.rows[0][1];
     g_location = _result.rows[0][2];
@@ -54,8 +54,9 @@ router.post('/insert',function(_req,_res)
     g_emp_tel = _result.rows[0][5];
     g_emp_num = _result.rows[0][6];
 
-    faultlogic.select_id(g_emp_id, _res, ShowFault); // 선택유저가 가지고있는 고장목록
+    faultlogic.SelectId(g_emp_id, _res, ShowFault); // 선택유저가 가지고있는 고장목록
   }
+
   function ShowFault(_res, _logic_name)  // 선택유저가 가지고있는 고장목록
   {
     var arr_logic = new Array;
@@ -77,7 +78,7 @@ router.post('/insert',function(_req,_res)
       }
     }
 
-    _res.render('title',
+    _res.render('view_details',
     {
       id: g_emp_id, name : g_name, area : g_area, area1: g_location, station: g_station,
       title: g_emp_num, tel: g_emp_tel,                                       // 유저 정보

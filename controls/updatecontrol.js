@@ -24,9 +24,8 @@ var g_name = fs.readFileSync(__dirname+'/../views/list_column.ejs','utf8');//use
 var button = fs.readFileSync(__dirname+'/../views/update_button.ejs')
 var g_page; //response print page 변수
 var g_data; //userlist 저장변수
-var checked_num;
 var g_checked;
-faultlogic.select_logic(ShowFault);
+faultlogic.SelectLogic(ShowFault);
 
 router.post('/update_process',function(_req, _res)
 {
@@ -39,7 +38,7 @@ router.post('/update_process',function(_req, _res)
  // 선택된 emp_id 의 값 받아와야함
 
   var db = require('../models/delete_faultlogic.js');
-  db.multi_delete(_req, _res, fault, emp_count,emp_id)
+  db.MultiDelete(_req, _res, fault, emp_count,emp_id)
 });
 
 router.post('/update',function(_req, _res)
@@ -49,7 +48,7 @@ router.post('/update',function(_req, _res)
   post = _req.body;
   id = post.id
   checked = post.checked;//체크된 유저 수
-  faultlogic.multi_select_id(id,MultiChecked);
+  faultlogic.MultiSelectId(id,MultiChecked);
 });
 function MultiChecked(_number)
 {
@@ -60,7 +59,7 @@ function MultiChecked(_number)
 
 function ShowFault(_logic_list) // 고장 유형 리스트 출력
 {
-  g_fault_list2 = fault_list_create.list(_logic_list.rows);
+  g_fault_list2 = fault_list_create.FaultList(_logic_list.rows);
 }
 
 function SelectUserlist(_checked, _id, _res,)

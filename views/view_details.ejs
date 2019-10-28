@@ -1,6 +1,6 @@
 <html>
 <head>
-<script src='../assets/js/ch.js'></script>
+<script src='../assets/js/detail_checked.js'></script>
 </head>
 <body>
 <form method = "post" name = "frm">
@@ -16,7 +16,7 @@
   <br>
 </strong>
 
-<input type = "button"  onclick="myFunction()" value = "추가">
+<input type = "button"  onclick="AddType()" value = "추가">
 <div id="myDIV"  style = " display:none ;">
 <table>
 
@@ -32,7 +32,7 @@
 
 <input type = "hidden" name = "title" value ="<%= title %>">
 <input type = "hidden" name = "emp_id" value ="<%= id %>">
-<button type = "button" onclick = "ch()">저장</div></form>
+<button type = "button" onclick = "DetailChecked()">저장</div></form>
 
 
 <div style="display:none;">

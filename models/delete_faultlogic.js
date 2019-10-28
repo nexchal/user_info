@@ -7,7 +7,7 @@ oracledb.autoCommit = true;
 
 module.exports =
 {
-	delete:function(_req, _res, ch_value, ch_count,emp_id, address)
+	Delete:function(_req, _res, ch_value, ch_count,emp_id, address)
   {
 		console.log("개인별 수정");
     oracledb.getConnection(dbConfig,function(err, conn)
@@ -31,7 +31,7 @@ module.exports =
 		_res.end();
  	},
 
-	multi_delete: function(_req, _res, _fault, _emp_count,_emp_id)
+	MultiDelete: function(_req, _res, _fault, _emp_count,_emp_id)
 	{
 		console.log("여러명 수정");
 		console.log(_emp_count);

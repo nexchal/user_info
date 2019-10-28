@@ -4,7 +4,7 @@ var scadastation = require('../models/scadastation.js');//지역및 변젼소
 var faultlogic = require('../models/faultlogic.js');//고장판단로직
 module.exports = {
 
-  AllUser: function(_pid, _userlist)
+  AllUser: function(_pid, _userlist) // 모든유저
   {
     var data='';
     oracledb.getConnection(dbConfig,function(err, conn)
@@ -13,7 +13,7 @@ module.exports = {
        area_2 as 변전소, id FROM test_userinfo order by id desc`,_userlist);
     });
   },
-  user_info: function(_usernum, _res, _callback)
+  UserInfo: function(_usernum, _res, _callback)//상세보기 유저 선택
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -24,7 +24,7 @@ module.exports = {
     });
   },
 
-  UserLogic : function(_logic, _userlist)
+  UserLogic : function(_logic, _userlist)// 고장별 검색
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -32,7 +32,7 @@ module.exports = {
        area_2 as 변전소, id FROM test_userinfo where id in (select id from test_err_type where fault_logicid=(select logicid from faultlogic where logicname='${_logic}'))`,_userlist);
     });
   },
-  UserArea: function(_area, _reason, _station, _userlist)
+  UserArea: function(_area, _reason, _station, _userlist)//지역별 검색
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -94,7 +94,7 @@ module.exports = {
         }
     });
   },
-  UserDelete: function(_id, _checked ,_callback)
+  UserDelete: function(_id, _checked ,_callback)//유저 삭제
   {
     console.log(`유저 삭제`+_id);
 
@@ -115,7 +115,7 @@ module.exports = {
 
     });
   },
-  SelectUser:function(_checked, _id, _userlist)           // 아중 선택 유저
+  SelectUser:function(_checked, _id, _userlist)    // 다중 선택 유저
   {
     console.log(`선택유저`+_id);
     oracledb.getConnection(dbConfig,function(err, conn)
@@ -145,7 +145,7 @@ module.exports = {
         }
     });
   },
-  Insert:function(_emp_no, _new_name, _new_tel, _area, _reason, _station, callback){
+  Insert:function(_emp_no, _new_name, _new_tel, _area, _reason, _station, callback){ // 유저 추가
 			var oracledb = require('oracledb');
 			var dbConfig = require('./../config/dbconfig2.js');
       oracledb.getConnection(dbConfig,function(err, conn)

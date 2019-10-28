@@ -117,7 +117,7 @@
       function reload() {
         window.location.reload(true);
       }
-      function test()
+      function TypeCheck()
       {
         show = document.getElementsByName("fault"); //상세보기 페이지 내에 체크박스 이름은 check 수정페이지 내에 체크박스 이름은 fault
         val = document.getElementsByName("hidden_check");

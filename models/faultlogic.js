@@ -2,7 +2,7 @@ var oracledb=require('oracledb');
 var dbConfig = require('./../config/dbconfig2.js');
 
 module.exports = {
-  select_logic: function(_callback)
+  SelectLogic: function(_callback)
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -13,7 +13,7 @@ module.exports = {
     });
   },
 
-  select_id: function(_emp_id, _res, _callback)  // 선택유저가 가지고있는 고장목록
+  SelectId: function(_emp_id, _res, _callback)  // 선택유저가 가지고있는 고장목록
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -24,7 +24,7 @@ module.exports = {
     });
   },
 
-  multi_select_id: function(_emp_id,_callback)  // 선택유저가 가지고있는 고장목록
+  MultiSelectId: function(_emp_id,_callback)  // 선택유저가 가지고있는 고장목록
   {
     console.log("다중 검색 도착");
     var fault_number = "";
