@@ -1,7 +1,7 @@
 function CreateView(_area,_area1,_station, _logicname)//유저 리스트 보기 리스트박스
 {
 
-  var view=`<select name='view' onchange="viewchange()">
+  var view=`<select name='view' onchange="ViewChange()">
       <option value='0' selected>-- 선택 --</option>
       <option value='all'>전체</option>
       <option value='area'>지역</option>
@@ -33,7 +33,7 @@ function CreateView(_area,_area1,_station, _logicname)//유저 리스트 보기 
   {
     view += `<option value ='${_logicname[i][1]}'>${_logicname[i][1]}</option>`;
   }
-  view += `</select><input type="button" value="검색" onclick="userview()">`;
+  view += `</select><input type="button" value="검색" onclick="Userview()">`;
   return view;
 }
 

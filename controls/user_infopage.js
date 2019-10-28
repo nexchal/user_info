@@ -6,7 +6,7 @@ var faultlogic = require('../models/faultlogic.js');
 var userinfo = require('../models/userinfo.js');
 var router = express.Router();
 var delete_faultlogic = require('../models/delete_faultlogic.js');
-var checked_num; // 사용자가 선택한 고장유형
+var g_checked_num; // 사용자가 선택한 고장유형
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
@@ -66,7 +66,7 @@ router.post('/insert',function(_req,_res)
     {
       val_length = 1 ;
       arr_logic = '';
-      checked_num = arr_logic;
+      g_checked_num = arr_logic;
     }
     else
     {
@@ -74,7 +74,7 @@ router.post('/insert',function(_req,_res)
       for(var q = 0; q < val_length; q++)
       {
         arr_logic.push(logic_number[q][1]);
-        checked_num = arr_logic;
+        g_checked_num = arr_logic;
       }
     }
 
@@ -84,7 +84,7 @@ router.post('/insert',function(_req,_res)
       title: g_emp_num, tel: g_emp_tel,                                       // 유저 정보
       all_fault_list: g_fault_list, all_fault_length: g_fault_list.length,  //	전체 고장 목록
       user_fault: _logic_name.rows, length: _logic_name.rows.length,
-      checked: checked_num, checked_length : checked_num.length  // 유저 선택 고장 유형
+      checked: g_checked_num, checked_length : g_checked_num.length  // 유저 선택 고장 유형
     });
   }
 module.exports = router;

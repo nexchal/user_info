@@ -7,9 +7,6 @@ var userinfo = require('../models/userinfo.js');//userinfo 테이블
 var list_userinfolist = require('../views/list_userinfolist.js');//유저리스트 테이블화
 var list_function = require(__dirname+'/listcontrol_function.js');//리스트 출력 함수js
 var fault_list_create = require('../views/Fault_list_create.js');//유저리스트 테이블화
-
-
-
 var bodyParser = require('body-parser');
 
 oracledb.autoCommit = true;
