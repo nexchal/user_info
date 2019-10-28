@@ -122,25 +122,25 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
 }
 function Area()
 {
-  scadastation.info(5009999,Reason);//scadastation 계통
+  scadastation.AreaSearch(5009999,Reason);//scadastation 계통
 }
 function Reason(_area)
 {
   g_area = _area;
-  scadastation.info168(5009998,Station);//scadastation 구역
+  scadastation.	Reason168(5009998,Station);//scadastation 구역
 }
 function Station(_reason)
 {
   g_reason=_reason;
-  scadastation.info_stname(5009997, Listbox);// scadastation 변전소
+  scadastation.Station(5009997, Listbox);// scadastation 변전소
 }
 function Listbox(_station)//사용자 보기 리스트 박스 생성
 {
     g_station=_station;
-    faultlogic.select_logic(function(_logicname)
+    faultlogic.SelectLogic(function(_logicname)
     {
       g_faultlogic = _logicname.rows;
-      create_userview = list_createlistbox.createview(g_area, g_reason, g_station, g_faultlogic);
+      create_userview = list_createlistbox.Createview(g_area, g_reason, g_station, g_faultlogic);
       g_userview=ejs.render(g_userview_listbox,
       {
        listbox:create_userview

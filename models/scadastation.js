@@ -2,7 +2,7 @@ var oracledb = require('oracledb');
 var dbConfig = require('../config/dbconfig2.js');
 
 module.exports = {
-	info: function(pid, callback)
+	AreaSearch: function(pid, callback)
 	{
 		oracledb.getConnection(dbConfig,
 			function(err, conn)
@@ -22,7 +22,7 @@ module.exports = {
 		);
 	},
 
-	info168: function(pid, callback)
+	Reason168: function(pid, callback)
 	{
 		oracledb.getConnection(dbConfig,
 			function(err, conn)
@@ -42,7 +42,7 @@ module.exports = {
 		);
 },
 
-info_stname: function(pid, callback)
+Station: function(pid, callback)
 {
 	oracledb.getConnection(dbConfig,
 		function(err, conn)

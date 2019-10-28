@@ -1,4 +1,4 @@
-function ch()
+function DetailChecked()
   {
     var checkbox = document.getElementsByName("check");
     var checkboxleng = checkbox.length;
@@ -32,7 +32,7 @@ function ch()
     }
   }
 
-  function myFunction()
+  function AddType()
    {
      var x = document.getElementById("myDIV");
      if (x.style.display === "none")

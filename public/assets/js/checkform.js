@@ -1,5 +1,5 @@
 
-  function check_update()
+  function CheckUpdate()
     {
       var checkbox = document.getElementsByName("id");
       console.log(checkbox);
@@ -38,7 +38,7 @@
         }
       }
     }
-    function update_process()
+    function UpdateProcess()
       {
         var checkbox = document.getElementsByName("fault");
         console.log(checkbox);
@@ -73,7 +73,7 @@
           }
         }
       }
-    function check_delete()
+    function CheckDelete()
       {
         var checkbox = document.getElementsByName("id");
         console.log(checkbox);
@@ -109,15 +109,15 @@
         }
       }
 
-      function showPopup(select_num)
+      function ShowPopup(select_num)
       {
         window.open(`/page/${select_num}`, "a", "width=850, height=400, left=100, top=50");
       }
 
-      function reload() {
+      function Reload() {
         window.location.reload(true);
       }
-      function test()
+      function TypeCheck()
       {
         show = document.getElementsByName("fault"); //상세보기 페이지 내에 체크박스 이름은 check 수정페이지 내에 체크박스 이름은 fault
         val = document.getElementsByName("hidden_check");
@@ -128,7 +128,7 @@
           show[nick].checked=true;
         }
       }
-      function allcheck() //전체체크 , 해제
+      function Allcheck() //전체체크 , 해제
         {
 
           show_box = document.getElementsByName("fault");

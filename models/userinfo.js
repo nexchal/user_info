@@ -13,7 +13,7 @@ module.exports = {
        area_2 as 변전소, id FROM test_userinfo order by id desc`,_userlist);
     });
   },
-  user_info: function(_usernum, _res, _callback)
+  UserInfo: function(_usernum, _res, _callback)
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {

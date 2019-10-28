@@ -11,7 +11,7 @@
   var view = document.frm.view;
   var logic = document.frm.logic;
 
-  function viewchange()
+  function ViewChange()
   {
     var index = view.selectedIndex;
     var value = view.options[index].value;
@@ -60,7 +60,7 @@
     }
   }
 
-  function userview()
+  function Userview()
   {
     document.frm.action="/";
     document.frm.submit();

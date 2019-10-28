@@ -6,7 +6,7 @@ function UserinfoCreatelist(_list)//유저리스트 생성
         data += `
 
           <tr class="item">
-            <td class = "name"><a href='#' onclick="showPopup('${_list[i][0]}')">${_list[i][0]}</a></td>
+            <td class = "name"><a href='#' onclick="ShowPopup('${_list[i][0]}')">${_list[i][0]}</a></td>
             <td class = "name">${_list[i][1]}</td>
             <td class = "name">${_list[i][2]}</td>
             <td class = "name">${_list[i][3]}</td>
@@ -26,7 +26,7 @@ function UpdateUserinfoCreatelist(_list)//유저리스트 생성
       {
         data += `
         <tr>
-            <td><a href='#' onclick="showPopup(${_list[i][0]})">${_list[i][0]}</a></td>
+            <td><a href='#' onclick="ShowPopup('${_list[i][0]}')">${_list[i][0]}</a></td>
             <td>${_list[i][1]}</td>
             <td>${_list[i][2]}</td>
             <td>${_list[i][3]}</td>

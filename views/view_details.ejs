@@ -1,6 +1,6 @@
 <html>
 <head>
-<script src='../assets/js/ch.js'></script>
+<script src='../assets/js/detail_checked.js'></script>
 </head>
 <body>
 <form method = "post" name = "frm">
@@ -16,15 +16,15 @@
   <br>
 </strong>
 
-<input type = "button"  onclick="myFunction()" value = "추가">
+<input type = "button"  onclick="AddType()" value = "추가">
 <div id="myDIV"  style = " display:none ;">
 <table>
 
 <% for( var i = 0 ; i < all_fault_length; i++) { %>
 <% if (i%5==0) { %>
-<tr><td><label><input type="checkbox" class = "ch" name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
+<tr><td><label><input type="checkbox" name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
 <% } else { %>
-<td><label><input type="checkbox" class = "ch" name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
+<td><label><input type="checkbox"  name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
 <% } %>
 <% } %>
 </table><br>
@@ -32,7 +32,7 @@
 
 <input type = "hidden" name = "title" value ="<%= title %>">
 <input type = "hidden" name = "emp_id" value ="<%= id %>">
-<button type = "button" onclick = "ch()">저장</div></form>
+<button type = "button" onclick = "DetailChecked()">저장</div></form>
 
 
 <div style="display:none;">

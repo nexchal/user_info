@@ -1,4 +1,4 @@
-function list(_list) //고장목록 생성
+function FaultList(_list) //고장목록 생성
 {
   var data='';
       for(var i=0; i < _list.length; i++)
@@ -19,5 +19,5 @@ function list(_list) //고장목록 생성
 }
 
 module.exports={
-    list,
+    FaultList,
 }
