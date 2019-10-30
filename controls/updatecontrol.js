@@ -61,7 +61,6 @@ function ShowFault(_logic_list) // 고장 유형 리스트 출력
 
 function SelectUserlist(_checked, _id, _res,)
 {
-  console.log(g_checked);
   userinfo.SelectUser(_checked, _id, function(err,result)
   {
     g_data = list_userinfolist.UpdateUserinfoCreatelist(result.rows);

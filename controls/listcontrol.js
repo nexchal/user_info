@@ -24,8 +24,6 @@ router.post('/',function(_req, _res) //메인 페이지 유저 검색리스트 �
   var reason = post.area1;
   var station = post.station;
   var logic = post.logic;
-  console.log(logic);
-  console.log(view);
   switch (view)
   {
     case '0':
@@ -35,11 +33,9 @@ router.post('/',function(_req, _res) //메인 페이지 유저 검색리스트 �
         list_function.UserinfoAllUser(_res);
         break;
     case 'area':
-      console.log(`지역 검색`);
       list_function.UserinfoAreaUser(_res, area, reason, station);
       break;
     case 'logic':
-      console.log(`로직 검색`);
       list_function.UserinfoLogicUser(_res, logic);
       break;
   }
@@ -55,10 +51,8 @@ router.post('/user_delete',function(_req,_res)//체크박스 삭제
   {
     if(err)
     {
-      console.error(err.message);
       throw err;
     }
-    console.log(result);
     _res.end(`<script>location.href="/"</script>`);
   });
 });

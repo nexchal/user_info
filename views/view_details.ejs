@@ -9,36 +9,33 @@
 연락처 : <%- tel %><br>
 지역 :  <%- area %>&nbsp<%- area1 %>&nbsp<%- station %> <br>
 
-고장사유 리스트: <br><strong>
+고장사유 리스트: <br><strong> <!--현재 보고있는 사용자가 가지고 있는 고장유형 출력 -->
 <% for( var j = 0 ; j < length; j++) { %>
-  <%= user_fault[j][0] %><br>
+  <%- user_fault[j][0] %><br>
   <% } %>
   <br>
 </strong>
 
+<!--전체 고장유형 목록 -->
 <input type = "button"  onclick="AddType()" value = "추가">
 <div id="myDIV"  style = " display:none ;">
-<table>
+<%- all_fault_list %>
 
-<% for( var i = 0 ; i < all_fault_length; i++) { %>
-<% if (i%5==0) { %>
-<tr><td><label><input type="checkbox" name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
-<% } else { %>
-<td><label><input type="checkbox"  name="check" value="<%=all_fault_list[i][0]%>"> <%= all_fault_list[i][1] %> </label></td>
+
+<!-- 현재 보고있는 사용자가 가지고 있는 고장유형 리스트 값을 detail_checked.js파일로 넘겨주기위해 생성
+보여줄 필요는 없어서 display none 으로 지정함 -->
+<div style = "display:none;">
+<% for( var i = 0 ; i < hidden_check_length; i++) { %>
+<input type = "checkbox" name = "hidden_check" value ="<%- hidden_check[i] %>"> <%- hidden_check[i] %>
 <% } %>
-<% } %>
-</table><br>
+</div>
 
 
+<!-- 현재 보고있는 사용자의 id값,사원번호를 수정기능에 사용하기위해 hidden 으로 생성-->
 <input type = "hidden" name = "title" value ="<%= title %>">
 <input type = "hidden" name = "emp_id" value ="<%= id %>">
+
 <button type = "button" onclick = "DetailChecked()">저장</div></form>
-
-
-<div style="display:none;">
-<% for( var i = 0 ; i < checked_length; i++) { %>
-<input type="checkbox" name="user_selected_value" value="<%= checked[i] %>"> <%=  checked[i] %>
-<% } %> </div>
 
 </body>
 </html>

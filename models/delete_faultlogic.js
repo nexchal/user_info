@@ -59,16 +59,34 @@ module.exports =
 					conn.execute(`delete from TEST_ERR_TYPE where id = ${_emp_id[i]}`, function (err, result)
 					{ console.log("삭제"+result); });
 				}
+
+				for(var i = 0; i < _emp_id.length; i++)
+	      {
+					for(var j = 0; j < _emp_count; j++)
+		      {
+						conn.execute(`BEGIN test_jw(${_emp_id[i]},${_fault[j]}); END;`);
+					}
+				}
+				/* for(var i = 0; i < _emp_id.length; i++)
+				{
+					conn.execute(`delete from TEST_ERR_TYPE where id = ${_emp_id[i]}`, function (err, result)
+					{ console.log("삭제"+result); });
+				}*/
+				/*
 	      for(var i = 0; i < _emp_id.length; i++)
 	      {
 					for(var j = 0; j < _emp_count; j++)
 		      {
-		      	conn.execute(`insert into TEST_ERR_TYPE values(${_fault[j]},${_emp_id[i]})`, function (err, result1)
+						conn.execute(`exec test_jw(${_fault[j]},${_emp_id[i]})`, function (err, result1)
+						{
+							console.log(result1);
+						});
+					}
+				}*/
+					 	/*conn.execute(`insert into TEST_ERR_TYPE values(${_fault[j]},${_emp_id[i]})`, function (err, result1)
 		        {
 		          console.log("고장 여러개 유저 여러명:"+result1);
-		        });
-	        }
-				}
+		        });*/
 	    }
 	  });
 		_res.writeHead(302, {Location: "/"});

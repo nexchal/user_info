@@ -1,13 +1,13 @@
 
   function CheckUpdate()
     {
-      var checkbox = document.getElementsByName("id");
+      var checkbox = document.getElementsByName("id"); // 메인페이지 유저목록 테이블에서 선택한 체크박스 값
       console.log(checkbox);
-      var checkboxleng = checkbox.length;
+      var checkboxleng = checkbox.length; //체크박스 전체길이
       var post
       var checked = 0;
       var i = 0;
-      for (i=0; i<checkboxleng; i++)
+      for (i=0; i<checkboxleng; i++) // 체크된 체크박스 갯수 확인
       {
         if(checkbox[i].checked == true)
         {
@@ -38,6 +38,7 @@
         }
       }
     }
+
     function UpdateProcess()
       {
         var checkbox = document.getElementsByName("fault");
@@ -111,7 +112,7 @@
 
       function ShowPopup(select_num)
       {
-        window.open(`/page/${select_num}`, "a", "width=850, height=400, left=100, top=50");
+        window.open(`/page/${select_num}`, "a", "width=950, height=400, left=100, top=50");
       }
 
       function Reload() {

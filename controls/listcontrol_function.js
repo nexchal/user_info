@@ -89,10 +89,8 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
 
 function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저리스트 생성
 {
-  console.log(`userinfo_areauser 함수 동작`);
     userinfo.UserArea(_area, _reason, _station, function(err, list)
     {
-      console.log(`userinfo_area 함수 동작`);
       var count;
       var bodydata;
 
