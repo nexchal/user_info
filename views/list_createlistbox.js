@@ -2,7 +2,7 @@ function Createview(_area,_area1,_station, _logicname)//유저 리스트 보기 
 {
 
   var view=`<select name='view' onchange="ViewChange()">
-      <option value='0' selected>-- 선택 --</option>
+      <option value='default' selected>-- 선택 --</option>
       <option value='all'>전체</option>
       <option value='area'>지역</option>
       <option value='logic'>고장로직</option>

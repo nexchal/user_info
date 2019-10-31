@@ -28,7 +28,7 @@ router.post('/',function(_req, _res) //메인 페이지 유저 검색리스트 �
   var logic = post.logic;
   switch (view)
   {
-    case '0': //default
+    case 'default': //default
         list_function.UserinfoAllUser(_res);
         break;
     case 'all': //모든 유저 리스트 출력
