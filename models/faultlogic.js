@@ -24,7 +24,7 @@ module.exports = {
     });
   },
 
-  MultiSelectId: function(_emp_id,_callback)  // 선택유저가 가지고있는 고장목록
+  MultiSelectId: function(_emp_id, _callback)  // 선택유저가 가지고있는 고장목록
   {
     console.log("다중 검색 도착");
     var fault_number = "";

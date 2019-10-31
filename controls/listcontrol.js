@@ -1,8 +1,10 @@
+/***********************                메인 페이지 컨트롤 파일            ***********************/
+
 var express = require('express');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var userinfo = require('../models/userinfo.js');//userinfo 테이블
-var list_function = require(__dirname+'/listcontrol_function.js');//리스트 출력 함수js
+var list_function = require(__dirname+'/listcontrol_function.js');//메인 페이지 리스트 출력 함수js
 var router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -26,28 +28,28 @@ router.post('/',function(_req, _res) //메인 페이지 유저 검색리스트 �
   var logic = post.logic;
   switch (view)
   {
-    case '0':
+    case '0': //default
         list_function.UserinfoAllUser(_res);
         break;
-    case 'all':
+    case 'all': //모든 유저 리스트 출력
         list_function.UserinfoAllUser(_res);
         break;
-    case 'area':
+    case 'area': //지역별 유저 리스트 출력
       list_function.UserinfoAreaUser(_res, area, reason, station);
       break;
-    case 'logic':
+    case 'logic': //고장판단로직별 유저 리스트 출력
       list_function.UserinfoLogicUser(_res, logic);
       break;
   }
 
 });
 
-router.post('/user_delete',function(_req,_res)//체크박스 삭제
+router.post('/user_delete',function(_req,_res)//선택 유저리스트 삭제
 {
   var post = _req.body;
-  var id = post.id;
-  var checked = post.checked;
-  userinfo.UserDelete(id , checked, function(err, result)
+  var id = post.id;//유저의 id
+  var checked = post.checked;//유저가 체크된 개수
+  userinfo.UserDelete(id , checked, function(err, result)//userinfo db모듈로 유저 리스트 삭제
   {
     if(err)
     {

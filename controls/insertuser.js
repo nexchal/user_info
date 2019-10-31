@@ -57,22 +57,22 @@ function InsertUser(_res)//유저 추가 폼 호출함수
 
 function Area()//지역, 구역, 변전소 리스트박스 생성 함수
 {
-  scadastation.AreaSearch(5009999,Reason);//scadastation db 모듈에서 지역 select하여 Reason 함수에 콜백
+  scadastation.AreaSearch(5009999,Reason);//scadastation db 모듈에서 지역 select하여 Reason 함수를 콜백
 }
 function Reason(_area)
 {
-  g_area = _area;
-  scadastation.Reason168(5009998,Station);//scadastation db 모듈에서  구역 select하여 Station 함수에 콜백
+  g_area = _area; //지역 데이터 받아서 전역변수에 삽입
+  scadastation.Reason168(5009998,Station);//scadastation db 모듈에서  구역 select하여 Station 함수를 콜백
 }
-function Station(_reason) //scadastation db 모듈에서
+function Station(_reason)
 {
-  g_reason=_reason;
-  scadastation.Station(5009997,CreateCategory);// scadastation 변전소
+  g_reason=_reason; // 구역정보 받아서 전역변수에 삽입
+  scadastation.Station(5009997,CreateCategory);// scadastation db 모듈에서 변전소 select 하여 CreateCategory 함수를 콜백
 }
 function CreateCategory(_station)
 {
-  g_station=_station;
-  g_userview = list_createlistbox.CreateCategory(g_area, g_reason, g_station);
+  g_station=_station; //변전소 정보 받아서 전역변수에 삽입
+  g_userview = list_createlistbox.CreateCategory(g_area, g_reason, g_station); // 지역, 구역, 변전소 데이터를 받아 리스트 박스 생성
 }
 
 module.exports = router;
