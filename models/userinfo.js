@@ -109,16 +109,27 @@ module.exports = {
         conn.execute(`delete from test_err_type where id='${_id}'`,_callback);
       });
       }
-      else //Multi User Delete**************************************** 다중 삭제 test_err_type 구현안됨
+      else //Multi User Delete
       {
         for(var i=0; i< _id.length; i++)
         {
-          var sql=`delete from test_err_type where id='${_id[i]}'`;
-          console.log(`sql = `+sql);
-            conn.execute(`delete from test_userinfo where id='${_id[i]}'`, _callback);
+            conn.execute(`delete from test_userinfo where id='${_id[i]}'`, function(err, result)
+          {});
+        }
+        for(var j=0; j< _id.length; j++)
+        {
+          var a=0;
+          var sql=`delete from test_err_type where id='${_id[j]}'`;
+          conn.execute(sql, function(err, result1)
+          {
+            a++;
+            if(a == _id.length)
+            {
+              _callback(result1);
+            }
+          });
         }
       }
-
     });
   },
   SelectUser:function(_checked, _id, _userlist)           // 다중 선택 유저

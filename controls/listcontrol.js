@@ -49,12 +49,8 @@ router.post('/user_delete',function(_req,_res)//선택 유저리스트 삭제
   var post = _req.body;
   var id = post.id;//유저의 id
   var checked = post.checked;//유저가 체크된 개수
-  userinfo.UserDelete(id , checked, function(err, result)//userinfo db모듈로 유저 리스트 삭제
+  userinfo.UserDelete(id , checked, function(result)//userinfo db모듈로 유저 리스트 삭제
   {
-    if(err)
-    {
-      throw err;
-    }
     _res.end(`<script>location.href="/"</script>`);
   });
 });
