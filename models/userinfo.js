@@ -1,10 +1,12 @@
+/***********************               UserInfo 리스트 모듈            ***********************/
 var oracledb=require('oracledb');
 var dbConfig = require('./../config/dbconfig2.js');
 var scadastation = require('../models/scadastation.js');//지역및 변젼소
 var faultlogic = require('../models/faultlogic.js');//고장판단로직
+oracledb.autoCommit = true;
 module.exports = {
 
-  AllUser: function(_pid, _userlist)
+  AllUser: function(_pid, _userlist) //All User info Select
   {
     var data='';
     oracledb.getConnection(dbConfig,function(err, conn)
@@ -13,7 +15,7 @@ module.exports = {
        area_2 as 변전소, id FROM test_userinfo order by id desc`,_userlist);
     });
   },
-  UserInfo: function(_usernum, _res, _callback)
+  UserInfo: function(_usernum, _res, _callback) //SelectUser info Select
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -24,7 +26,7 @@ module.exports = {
     });
   },
 
-  UserLogic : function(_logic, _userlist)
+  UserLogic : function(_logic, _userlist) //FaultLogic Search
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -32,7 +34,7 @@ module.exports = {
        area_2 as 변전소, id FROM test_userinfo where id in (select id from test_err_type where fault_logicid=(select logicid from faultlogic where logicname='${_logic}'))`,_userlist);
     });
   },
-  UserArea: function(_area, _reason, _station, _userlist)
+  UserArea: function(_area, _reason, _station, _userlist) //Area Search
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -41,15 +43,15 @@ module.exports = {
       console.log(`변전소`+_station);
 
         console.log(`DB모듈 동작`);
-        if(_station == '0')
+        if(_station == '0') //Station not select
         {
-          if(_reason == '0')
+          if(_reason == '0') //Station and Reason not select
           {
             console.log(`지역만선택`)
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
              area_2 as 변전소, id FROM test_userinfo where area='${_area}'`,_userlist);
           }
-          else if(_area =='0')
+          else if(_area =='0')//Station and Area not select
           {
             console.log(`구역 선택`);
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
@@ -62,15 +64,15 @@ module.exports = {
                area_2 as 변전소, id FROM test_userinfo where area='${_area}' and area_1='${_reason}'`,_userlist);
           }
         }
-        else if(_reason == '0' && _station != '0')
+        else if(_reason == '0' && _station != '0') // Station select
         {
-          if(_area == '0')
+          if(_area == '0')//Area and Reason not select
           {
             console.log(`변전소 선택`);
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
                area_2 as 변전소, id FROM test_userinfo where area_2 ='${_station}'`,_userlist);
           }
-          else
+          else//Reason not select
           {
             console.log(`지역, 변전소 선택`);
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
@@ -79,13 +81,13 @@ module.exports = {
         }
         else
         {
-          if(_area != '0')
+          if(_area != '0') // All select
           {
             console.log(`지역, 구역, 변전소 선택`);
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
                area_2 as 변전소, id FROM test_userinfo where area='${_area}' and area_1='${_reason}' and area_2='${_station}'`,_userlist);
           }
-          else
+          else // Reason and Station select
           {
             console.log(`구역, 변전소 선택`);
             conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
@@ -94,28 +96,32 @@ module.exports = {
         }
     });
   },
-  UserDelete: function(_id, _checked ,_callback)
+  UserDelete: function(_id, _checked ,_callback) //User Delete
   {
     console.log(`유저 삭제`+_id);
-
+    console.log(`유저수`+_checked);
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      if(_checked == 1)
+      if(_checked == 1) //Single User Delete
       {
-        conn.execute(`delete from test_userinfo where id='${_id}' `,_callback);
+        conn.execute(`delete from test_userinfo where id='${_id}' `,function(err, result)
+      {
+        conn.execute(`delete from test_err_type where id='${_id}'`,_callback);
+      });
       }
-      else
+      else //Multi User Delete**************************************** 다중 삭제 test_err_type 구현안됨
       {
         for(var i=0; i< _id.length; i++)
         {
-            conn.execute(`delete from test_userinfo where id='${_id[i]}' `,_callback);
+          var sql=`delete from test_err_type where id='${_id[i]}'`;
+          console.log(`sql = `+sql);
+            conn.execute(`delete from test_userinfo where id='${_id[i]}'`, _callback);
         }
-
       }
 
     });
   },
-  SelectUser:function(_checked, _id, _userlist)           // 아중 선택 유저
+  SelectUser:function(_checked, _id, _userlist)           // 다중 선택 유저
   {
     console.log(`선택유저`+_id);
     oracledb.getConnection(dbConfig,function(err, conn)

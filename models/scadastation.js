@@ -1,8 +1,10 @@
+/***********************               ControlCenter Name, ScadaStation Name 리스트 모듈            ***********************/
+
 var oracledb = require('oracledb');
 var dbConfig = require('../config/dbconfig2.js');
 
 module.exports = {
-	AreaSearch: function(pid, callback)
+	AreaSearch: function(pid, callback) //ControlCenter Name Select
 	{
 		oracledb.getConnection(dbConfig,
 			function(err, conn)
@@ -22,7 +24,7 @@ module.exports = {
 		);
 	},
 
-	Reason168: function(pid, callback)
+	Reason168: function(pid, callback) //CenterName select
 	{
 		oracledb.getConnection(dbConfig,
 			function(err, conn)
@@ -42,7 +44,7 @@ module.exports = {
 		);
 },
 
-Station: function(pid, callback)
+Station: function(pid, callback) //ScadaStation Name Select
 {
 	oracledb.getConnection(dbConfig,
 		function(err, conn)
