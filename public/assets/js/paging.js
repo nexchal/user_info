@@ -86,7 +86,7 @@ function page(_view)
 
    for (var page = nowp ; page < endp; page++)
    {
-    $(`<span class="pageNum"> <a href="#">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
+    $(`<span class="pageNum"> <a href="#" id = "pagenum">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
     {
 
      currentPage = event.data['newPage'];

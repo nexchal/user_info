@@ -1,23 +1,40 @@
 <html>
 <head>
 <script src='../assets/js/detail_checked.js'></script>
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../assets/scss/detail_view.css" />
+<script>
+function hello()
+{
+  box = document.getElementsByName("q"); // fault 유형 값을 가지고 있는 체크박스 name
+
+  for(var i = 0; i < 3; i++) // 상세보기 페이지에서 사용자가 이전에 선택한 고장 목록은 체크되게함
+  {
+   box[i].checked=true;
+  }
+}
+</script>
+
 </head>
 <body>
 <form method = "post" name = "frm">
 <input type="hidden" name="checked" value=0>
+<div style = "background-color : #ccc"> &nbsp </div>
 담당자 : <%- name %><br>
 연락처 : <%- tel %><br>
 지역 :  <%- area %>&nbsp<%- area1 %>&nbsp<%- station %> <br>
 
 고장사유 리스트: <br><strong> <!--현재 보고있는 사용자가 가지고 있는 고장유형 출력 -->
 <% for( var j = 0 ; j < length; j++) { %>
-  <%- user_fault[j][0] %><br>
+  <li><%- user_fault[j][0] %></li>
   <% } %>
   <br>
 </strong>
+<div style = "background-color : #ccc"> <input type = "button" class = "add" onclick="AddType()" value = "추가"></div>
+
 
 <!--전체 고장유형 목록 -->
-<input type = "button"  onclick="AddType()" value = "추가">
+
 <div id="myDIV"  style = " display:none ;">
 <%- all_fault_list %>
 

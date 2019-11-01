@@ -14,7 +14,6 @@
           {
             if(name[j].innerHTML.toUpperCase().indexOf(value) > -1)
             {
-
               item[i].style.visibility ="visible";
               break;
             }
@@ -24,11 +23,4 @@
             }
           }
         }
-      }
-
-      function search()
-      {
-        value=document.getElementById("value");
-        item = document.getElementsByClassName("item");
-        
       }

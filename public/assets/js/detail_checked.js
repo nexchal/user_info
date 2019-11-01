@@ -1,3 +1,4 @@
+
 function DetailChecked()
   {
     var checkbox = document.getElementsByName("fault"); // 선택된 고장목록 체크박스 값
@@ -31,7 +32,6 @@ function DetailChecked()
       }
     }
   }
-
   function AddType() // 추가버튼 클릭 시 fault유형 목록들을 보여줌
    {
      var x = document.getElementById("myDIV");

@@ -1,16 +1,19 @@
 <form name="frm" method = "post">
 <input type="hidden" name="checked" value=0>
-<%- userview %>
 <table  class="tbList paginated">
-  <div class="pagination" id="pagination"></div>
-  보여줄 리스트 개수 :
+  <%- userview %>
+  <br>
+  <div class = "countbox"> 보여줄 리스트 개수 :
       <select name="list" onchange="listchange()">
-      <option value="5">5</option>
-      <option value="10">10</<option>
+        <option value="5">5</option>
+        <option value="10">10</<option>
         <option value="15">15</<option>
-          <option value="20">20</<option>
-        </select>
-        <%- search %>
+        <option value="20">20</<option>
+      </select>
+  </div>
+  <div class = "searchbox">
+    <%- search %>
+  </div>
     <thead>
           <tr>
             <%- dbname %>
@@ -22,10 +25,14 @@
     </tbody>
 </table>
     <%- fault_list %>
-    <div style = "display:none;">
-    <input type = "checkbox" name = "all" >
+
+    <div>
+    <input type = "checkbox" name = "all" > all
     <% for( var i = 0 ; i < hidden_check_length; i++) { %>
-    <input type = "checkbox" name = "hidden_check" value ="<%- hidden_check[i] %>"> <%- hidden_check[i] %>
+    <input type = "checkbox" name = "hidden_check" id = "hidden" class ="select_one" value ="<%- hidden_check[i] %>"> <%- hidden_check[i] %>
     <% } %>
     </div>
 </form>
+
+<div class="pagination" id="pagination"></div><br>
+<%- controls %>

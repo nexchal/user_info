@@ -44,6 +44,8 @@ router.post('/update',function(_req, _res)
   res = _res;
   post = _req.body;
   id = post.id
+  peo = id.length
+  console.log(peo);
   checked = post.checked;//체크된 유저 수
   faultlogic.MultiSelectId(id,MultiChecked);
 });
@@ -66,19 +68,20 @@ function SelectUserlist(_checked, _id, _res,)
     g_data = list_userinfolist.UpdateUserinfoCreatelist(result.rows);
     bodydata = ejs.render(g_src_body,
     {
-      userview: '',
+      userview: `<input type = "text" value = ${peo}> `,
       search:'',
       dbname: g_name,
       dbdata: g_data,
       fault_list: g_fault_list2,
       hidden_check: g_checked,
-      hidden_check_length: g_checked.length
+      hidden_check_length: g_checked.length,
+      controls : button
     });
     g_page = ejs.render(g_src,
     {
       frame_top: g_src_top,
       frame_body: bodydata,
-      frame_bottom: button,
+      frame_bottom: '',
 
     });
     _res.writeHead(200);

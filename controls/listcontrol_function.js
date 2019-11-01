@@ -38,6 +38,7 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
         search:g_search,
         dbname: g_name,
         dbdata: g_data,
+        controls: g_controls,
         fault_list:'',
         hidden_check: '',
         hidden_check_length: ''
@@ -46,8 +47,7 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
       {
         frame_top: g_src_top,
         frame_body: bodydata,
-        frame_bottom:g_controls,
-
+        frame_bottom:'',
       });
       _res.writeHead(200);
       _res.end(g_page);
@@ -70,6 +70,7 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
         search:g_search,
         dbname: g_name,
         dbdata: g_data,
+        controls: g_controls,
         fault_list:'',
         hidden_check: '',
         hidden_check_length: ''
@@ -79,7 +80,7 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
       {
         frame_top: g_src_top,
         frame_body: bodydata,
-        frame_bottom:g_controls
+        frame_bottom:''
       });
 
       _res.writeHead(200);
@@ -102,6 +103,7 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
         search:g_search,
         dbname: g_name,
         dbdata: g_data,
+        controls: g_controls,
         fault_list:'',
         hidden_check: '',
         hidden_check_length: ''
@@ -111,7 +113,7 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
       {
         frame_top: g_src_top,
         frame_body: bodydata,
-        frame_bottom:g_controls
+        frame_bottom:''
       });
 
       _res.writeHead(200);
