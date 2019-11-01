@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome">
     <title>지능형 Web</title>
 <head>
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../assets/scss/table.css" />
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
 <script src="../assets/js/checkform.js"></script>
 
 	<style>
 
-  #title {text-decoration: none; color: white;}
 
     div.top {
-        height:100px;
+        height:10px;
         width: 100%;
         display:table;
     }
@@ -25,7 +25,8 @@
         position: relative;
     }
     div.bottom {
-        bottom:0px;
+        height:100px;
+        bottom:10px;
         width: 100%;
         position:fixed;
     }
@@ -34,8 +35,8 @@
 </head>
 <body>
 
-	 <div class="top"><%- frame_top %></div>
-    <div class="right"><%- frame_body %></div>
+	 <div class="top"><%- frame_top %></div><br>
+    <div class="right"><%- frame_body %></div><br>
     <div class="bottom"><%- frame_bottom %></div>
 
 </body>

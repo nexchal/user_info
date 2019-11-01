@@ -36,9 +36,10 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
       bodydata = ejs.render(g_src_body,
       {
         userview: g_userview, //유저 고장판단로직별, 지역별 보기 리스트박스
-        search:g_search, //유저 검색 모듈
+        search:g_search,  //유저 검색 모듈
         dbname: g_name, // 유저 리스트 항목 이름
         dbdata: g_data, //유저리스트
+        controls: g_controls,
         fault_list:'',
         hidden_check: '',
         hidden_check_length: ''
@@ -47,7 +48,7 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
       {
         frame_top: g_src_top, //상단바
         frame_body: bodydata, //바디 내용
-        frame_bottom:g_controls, //삭제, 수정, 추가 버튼
+        frame_bottom:'', //삭제, 수정, 추가 버튼
 
       });
       _res.writeHead(200);
@@ -71,6 +72,7 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
           search:g_search, //유저 검색 모듈
           dbname: g_name, // 유저 리스트 항목 이름
           dbdata: g_data, //유저리스트
+          controls: g_controls,
           fault_list:'',
           hidden_check: '',
           hidden_check_length: ''
@@ -79,7 +81,7 @@ function UserinfoLogicUser(_res, _logic)//고장판단로직 유저리스트 생
         {
           frame_top: g_src_top, //상단바
           frame_body: bodydata, //바디 내용
-          frame_bottom:g_controls, //삭제, 수정, 추가 버튼
+          frame_bottom:'', //삭제, 수정, 추가 버튼
 
         });
 
@@ -103,6 +105,7 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
         search:g_search, //유저 검색 모듈
         dbname: g_name, // 유저 리스트 항목 이름
         dbdata: g_data, //유저리스트
+        controls: g_controls,
         fault_list:'',
         hidden_check: '',
         hidden_check_length: ''
@@ -111,7 +114,7 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
       {
         frame_top: g_src_top, //상단바
         frame_body: bodydata, //바디 내용
-        frame_bottom:g_controls, //삭제, 수정, 추가 버튼
+        frame_bottom:'', //삭제, 수정, 추가 버튼
       });
 
       _res.writeHead(200);

@@ -110,26 +110,34 @@
         }
       }
 
-      function ShowPopup(select_num)
+      function ShowPopup(select_num) // 상세보기 페이지 클릭 시 팝업으로
       {
-        window.open(`/page/${select_num}`, "a", "width=950, height=400, left=100, top=50");
+        window.open(`/page/${select_num}`, "a", "width=1069, height=418, left=100, top=50");
       }
 
-      function Reload()
+      function Reload() //새로고침
       {
         window.location.reload(true);
       }
+
       function TypeCheck()
       {
-        show = document.getElementsByName("fault"); //상세보기 페이지 내에 체크박스 이름은 check 수정페이지 내에 체크박스 이름은 fault
+        show = document.getElementsByName("fault");
         val = document.getElementsByName("hidden_check");
+
+        val[]
+
+
 
         for(var i = 0; i < val.length; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
         {
           nick = val[i].value-1;
           show[nick].checked=true;
         }
+
       }
+
+
       function Allcheck() //전체체크 , 해제
         {
 
@@ -153,7 +161,7 @@
             }
           }
         }
-      function InsertPopup()
+      function InsertPopup() // 사용자 추가 시 팝업으로 생성
       {
-        window.open(`/insertuser`, "a", "width=520, height=300, left=100, top=50");
+        window.open(`/insertuser`, "a", "width=525, height=300, left=100, top=50");
       }

@@ -1,16 +1,17 @@
 var fs = require('fs');
 var ejs = require('ejs');
 var express=require('express');
-var bodyParser = require('body-parser');
-var faultlogic = require('../models/faultlogic.js');
-var userinfo = require('../models/userinfo.js');
-var fault_list_create = require('../views/Fault_list_create.js');
+var bodyParser = require('body-parser'); //form 애서 넘어온 값 받아오기 위해 사용
+var faultlogic = require('../models/faultlogic.js'); // 고장유형 목록 조회 모델
+var userinfo = require('../models/userinfo.js'); // 사용자 정보 목록 조회 모델
+var fault_list_create = require('../views/Fault_list_create.js'); // 고장유형 목록 체크박스로 생성하는 파일
+
 var router = express.Router();
-var delete_faultlogic = require('../models/delete_faultlogic.js');
+var delete_faultlogic = require('../models/delete_faultlogic.js'); // 고장유형 삭제,삽입 모델
 var g_checked_num; // 사용자가 선택한 고장유형
 router.use(bodyParser.urlencoded({ extended: false }));
 
-router.get('/page/:pageId',function(_req, _res)
+router.get('/page/:pageId',function(_req, _res) // 사용자 정보 상세보기
 {
   var usernum = _req.params.pageId;
   return Html(_req, _res, usernum);
@@ -73,10 +74,12 @@ router.post('/insert',function(_req,_res)
     _res.render('view_details',
     {
       id: g_emp_id, name : g_name, area : g_area, area1: g_location, station: g_station,
-      title: g_emp_num, tel: g_emp_tel,                                       // 유저 정보
-      all_fault_list: g_fault_list, all_fault_length: g_fault_list.length,  //	전체 고장 목록
+      title: g_emp_num, tel: g_emp_tel,                                      // 유저 정보 변수
+
+      all_fault_list: g_fault_list, all_fault_length: g_fault_list.length,  //	전체 고장 목록,길이
+
       user_fault: _logic_name.rows, length: _logic_name.rows.length,
-      hidden_check: g_checked_num, hidden_check_length : g_checked_num.length  // 유저 선택 고장 유형
+      hidden_check: g_checked_num, hidden_check_length : g_checked_num.length  // 유저가 선택한 고장유형 목록,길이
     });
   }
 module.exports = router;

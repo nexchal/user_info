@@ -1,0 +1,41 @@
+table{
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+
+}
+
+table tr{
+  border-bottom: 1px solid #ccc;
+}
+table td, th{
+  padding: 7px 15px;
+}
+table tbody tr{
+  background-color: snow;
+} */
+table tbody td+td{
+  text-align: center;
+}
+body{
+  color:#0C2E2B;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.add{
+  background:#ccc;
+  color:white;
+  position:relative;
+  height:25px;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.add{
+  background:#fff;
+  color:black;
+}

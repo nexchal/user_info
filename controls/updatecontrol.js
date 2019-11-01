@@ -44,7 +44,9 @@ router.post('/update',function(_req, _res)// 수정 페이지
   console.log("update!!");
   res = _res;
   post = _req.body;
-  id = post.id //유저의 id
+  id = post.id
+  peo = id.length
+  console.log(peo);
   checked = post.checked;//체크된 유저 수
   faultlogic.MultiSelectId(id, MultiChecked); //선택된 유저들의 고장판단로직ID 목록 select 해서 콜백
 });
@@ -67,19 +69,20 @@ function SelectUserlist(_checked, _id, _res,)// 유저리스트, 고장판단로
     g_data = list_userinfolist.UpdateUserinfoCreatelist(result.rows);
     bodydata = ejs.render(g_src_body,
     {
-      userview: '',
+      userview: `<input type = "text" value = ${peo}> `,
       search:'',
       dbname: g_name, //데이터 명
       dbdata: g_data, // 데이터
       fault_list: g_fault_list2, //전체 고장판단로직 리스트
       hidden_check: g_checked,
-      hidden_check_length: g_checked.length
+      hidden_check_length: g_checked.length,
+      controls : button
     });
     g_page = ejs.render(g_src,
     {
       frame_top: g_src_top,
       frame_body: bodydata,
-      frame_bottom: g_controls,
+      frame_bottom: '',
 
     });
     _res.writeHead(200);
