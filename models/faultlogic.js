@@ -1,8 +1,10 @@
+/***********************               FaultLogic 리스트 모듈            ***********************/
+
 var oracledb=require('oracledb');
 var dbConfig = require('./../config/dbconfig2.js');
-
+oracledb.autoCommit = true;
 module.exports = {
-  SelectLogic: function(_callback)
+  SelectLogic: function(_callback) //FaultLogic ID, Name Select
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -13,7 +15,7 @@ module.exports = {
     });
   },
 
-  SelectId: function(_emp_id, _res, _callback)  // 선택유저가 가지고있는 고장목록
+  SelectId: function(_emp_id, _res, _callback)  // 선택유저가 가지고있는 고장목록 Select
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
@@ -24,7 +26,7 @@ module.exports = {
     });
   },
 
-  MultiSelectId: function(_emp_id,_callback)  // 선택유저가 가지고있는 고장목록
+  MultiSelectId: function(_emp_id, _callback)  // 다중 선택유저가 가지고있는 고장목록 Select
   {
     console.log("다중 검색 도착");
     var fault_number = "";
