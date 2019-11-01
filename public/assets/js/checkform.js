@@ -115,7 +115,8 @@
         window.open(`/page/${select_num}`, "a", "width=950, height=400, left=100, top=50");
       }
 
-      function Reload() {
+      function Reload()
+      {
         window.location.reload(true);
       }
       function TypeCheck()
