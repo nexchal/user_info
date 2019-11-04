@@ -4,11 +4,13 @@
 <%-listbox %>
 
 <script>
+
   var logic = document.frm.logic;
   var area = document.frm.area;
-  var area1 = document.frm.area1;
+  var reason = document.frm.reason;
   var station = document.frm.station;
   var view = document.frm.view;
+
   var logic = document.frm.logic;
 
   function ViewChange()
@@ -16,12 +18,13 @@
     var index = view.selectedIndex;
     var value = view.options[index].value;
     console.log(value);
+
     if(value=='')
     {
       area.style.display="none";
       area.selectedIndex=0;
-      area1.style.display="none";
-      area1.selectedIndex=0;
+      reason.style.display="none";
+      reason.selectedIndex=0;
       station.style.display="none";
       station.selectedIndex=0;
       logic.selectedIndex=0;
@@ -30,7 +33,7 @@
     else if(value =='area')
     {
       area.style.display="inline";
-      area1.style.display="inline";
+      reason.style.display="inline";
       station.style.display="inline";
       area.selectedIndex=0;
       logic.selectedIndex=0;
@@ -42,8 +45,8 @@
       logic.style.display="inline";
       area.style.display="none";
       area.selectedIndex=0;
-      area1.style.display="none";
-      area1.selectedIndex=0;
+      reason.style.display="none";
+      reason.selectedIndex=0;
       station.style.display="none";
       station.selectedIndex=0;
     }
@@ -51,8 +54,8 @@
     {
       area.style.display="none";
       area.selectedIndex=0;
-      area1.style.display="none";
-      area1.selectedIndex=0;
+      reason.style.display="none";
+      reason.selectedIndex=0;
       station.style.display="none";
       station.selectedIndex=0;
       logic.selectedIndex=0;

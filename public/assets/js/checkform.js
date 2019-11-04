@@ -125,10 +125,6 @@
         show = document.getElementsByName("fault");
         val = document.getElementsByName("hidden_check");
 
-        val[]
-
-
-
         for(var i = 0; i < val.length; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
         {
           nick = val[i].value-1;

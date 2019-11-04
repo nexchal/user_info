@@ -76,7 +76,7 @@ function SelectUserlist(_checked, _id, _res,)// 유저리스트, 고장판단로
       fault_list: g_fault_list2, //전체 고장판단로직 리스트
       hidden_check: g_checked,
       hidden_check_length: g_checked.length,
-      controls : button
+      controls : g_controls,
     });
     g_page = ejs.render(g_src,
     {

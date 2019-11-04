@@ -86,15 +86,30 @@ function page(_view)
 
    for (var page = nowp ; page < endp; page++)
    {
-    $(`<span class="pageNum"> <a href="#" id = "pagenum">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
-    {
+     if(nowp==page)
+     {
+       $(`<span class="pageNum" style="font-weight:bold"> <a href="#" id = "pagenum">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
+       {
 
-     currentPage = event.data['newPage'];
-     $table.trigger('repaginate');
-     $($(".pageNum")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
+        currentPage = event.data['newPage'];
+        $table.trigger('repaginate');
+        $($(".pageNum")[(currentPage-nowp)+2]).addClass('active').css("font-weight","bold").siblings().removeClass('active').css("font-weight","");
 
-    }).appendTo(pagination).addClass('clickable');
-   }
+       }).appendTo(pagination).addClass('clickable');
+     }
+     else
+     {
+       $(`<span class="pageNum"> <a href="#" id = "pagenum">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
+       {
+
+        currentPage = event.data['newPage'];
+        $table.trigger('repaginate');
+        $($(".pageNum")[(currentPage-nowp)+2]).addClass('active').css("font-weight","bold").siblings().removeClass('active').css("font-weight","");
+
+       }).appendTo(pagination).addClass('clickable');
+      }
+    }
+
 
    // [다음]
 
