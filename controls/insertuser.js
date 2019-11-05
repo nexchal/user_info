@@ -39,7 +39,6 @@ router.post('/create_process',function(_req, _res)//유저 추가 시 실행코�
 
   userinfo.Insert(emp_no, new_name, new_tel, area, reason, station, function(err)//userinfo 테이블에 유저 추가 실행 함수
   {
-
     _res.end(`<script>opener.parent.location.reload(true);alert("create sucess!");window.close()</script>`);//alert창 띄우고 부모페이지 새로고침, 윈도우 종료
   });
 });

@@ -8,20 +8,7 @@
 <script src="../assets/vendor/jquery/jquery.min.js"></script>
 <script src="../assets/js/checkform.js"></script>
 <script>
-$(function () {
-$('.select_one').change (function () {
-    if ($('.select_one:checked').length == 0) {
-      // 전부 체크안됨
-        $('#real').removeClass('some_selected').attr('checked', false);
-    } else if ($('.select_one:not(:checked)').length == 0) {
-      // 일부만 체크됨
-        $('#real').removeClass('some_selected').attr('checked', true);
-    } else {
-        // 전부 체크됨
-        $('#real').addClass('some_selected').attr('checked', true);
-    }
-});
-});
+
 </script>
 	<style>
 
@@ -49,10 +36,8 @@ $('.select_one').change (function () {
         padding: 5px;
     }
 
-    .some_selected {
-        opacity: 0.5;
-        filter: alpha(opacity=50);
-    }
+    .some_selected { opacity: 0.5; filter: alpha(opacity=50); }
+
   </style>
 </head>
 <body onload = TypeCheck()>
@@ -63,24 +48,9 @@ $('.select_one').change (function () {
     <div class="bottom"><%- frame_bottom %></div>
 
     <div id="all">
-        <input type="checkbox" id="real" name = >
+        <input type="checkbox" id="real">
         <label for="select_all">Select all</label>
     </div>
-
-    <ul>
-        <li>
-            <input type="checkbox" id="one" name = "q" class="select_one">
-            <label for="one">One</label>
-        </li>
-        <li>
-            <input type="checkbox" id="two" name = "q" class="select_one">
-            <label for="two">Two</label>
-        </li>
-        <li>
-            <input type="checkbox" id="three" name = "q" class="select_one">
-            <label for="three">Three</label>
-        </li>
-    </ul>
 
 </body>
 
