@@ -11,15 +11,15 @@ module.exports = {
     var data='';
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-       area_2 as 변전소, id FROM test_userinfo order by id desc`,_userlist);
+      conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+       station as 변전소, id FROM test_userinfo order by id desc`,_userlist);
     });
   },
   UserInfo: function(_usernum, _res, _callback) //SelectUser info Select
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      conn.execute(`SELECT emp_name,area,area_1,area_2,id,emp_tel,emp_no FROM test_userinfo where emp_no = '${_usernum}'`,  function (err, result)
+      conn.execute(`SELECT emp_name,area,reason,station,id,emp_tel,emp_no FROM test_userinfo where emp_no = '${_usernum}'`,  function (err, result)
       {
         _callback(_res, result);
       });
@@ -30,8 +30,8 @@ module.exports = {
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-       area_2 as 변전소, id FROM test_userinfo where id in (select id from test_err_type where fault_logicid=(select logicid from faultlogic where logicname='${_logic}'))`,_userlist);
+      conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+       station as 변전소, id FROM test_userinfo where id in (select id from test_err_type where fault_logicid=(select logicid from faultlogic where logicname='${_logic}'))`,_userlist);
     });
   },
   UserArea: function(_area, _reason, _station, _userlist) //Area Search
@@ -48,20 +48,20 @@ module.exports = {
           if(_reason == '0') //Station and Reason not select
           {
             console.log(`지역만선택`)
-            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-             area_2 as 변전소, id FROM test_userinfo where area='${_area}'`,_userlist);
+            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+             station as 변전소, id FROM test_userinfo where area='${_area}'`,_userlist);
           }
           else if(_area =='0')//Station and Area not select
           {
             console.log(`구역 선택`);
-            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-             area_2 as 변전소, id FROM test_userinfo where area_1='${_reason}'`,_userlist);
+            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+             station as 변전소, id FROM test_userinfo where reason='${_reason}'`,_userlist);
           }
           else
           {
             console.log(`지역, 구역 선택`);
-            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-               area_2 as 변전소, id FROM test_userinfo where area='${_area}' and area_1='${_reason}'`,_userlist);
+            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+               station as 변전소, id FROM test_userinfo where area='${_area}' and reason='${_reason}'`,_userlist);
           }
         }
         else if(_reason == '0' && _station != '0') // Station select
@@ -69,14 +69,14 @@ module.exports = {
           if(_area == '0')//Area and Reason not select
           {
             console.log(`변전소 선택`);
-            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-               area_2 as 변전소, id FROM test_userinfo where area_2 ='${_station}'`,_userlist);
+            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+               station as 변전소, id FROM test_userinfo where station ='${_station}'`,_userlist);
           }
           else//Reason not select
           {
             console.log(`지역, 변전소 선택`);
-            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-               area_2 as 변전소, id FROM test_userinfo where  area='${_area}' and area_2 ='${_station}'`,_userlist);
+            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+               station as 변전소, id FROM test_userinfo where  area='${_area}' and station ='${_station}'`,_userlist);
           }
         }
         else
@@ -84,14 +84,14 @@ module.exports = {
           if(_area != '0') // All select
           {
             console.log(`지역, 구역, 변전소 선택`);
-            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-               area_2 as 변전소, id FROM test_userinfo where area='${_area}' and area_1='${_reason}' and area_2='${_station}'`,_userlist);
+            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+               station as 변전소, id FROM test_userinfo where area='${_area}' and reason='${_reason}' and station='${_station}'`,_userlist);
           }
           else // Reason and Station select
           {
             console.log(`구역, 변전소 선택`);
-            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, area_1 as 구역,
-               area_2 as 변전소, id FROM test_userinfo where area_1='${_reason}' and area_2='${_station}'`,_userlist);
+            conn.execute(`SELECT emp_no as 사원번호,emp_name as 사원명,emp_tel as 연락처, area as 지역, reason as 구역,
+               station as 변전소, id FROM test_userinfo where reason='${_reason}' and station='${_station}'`,_userlist);
           }
         }
     });
@@ -104,30 +104,13 @@ module.exports = {
     {
       if(_checked == 1) //Single User Delete
       {
-        conn.execute(`delete from test_userinfo where id='${_id}' `,function(err, result)
-      {
-        conn.execute(`delete from test_err_type where id='${_id}'`,_callback);
-      });
+          conn.execute(`delete from test_userinfo where id='${_id}' `,_callback);
       }
       else //Multi User Delete
       {
         for(var i=0; i< _id.length; i++)
         {
-            conn.execute(`delete from test_userinfo where id='${_id[i]}'`, function(err, result)
-          {});
-        }
-        for(var j=0; j< _id.length; j++)
-        {
-          var a=0;
-          var sql=`delete from test_err_type where id='${_id[j]}'`;
-          conn.execute(sql, function(err, result1)
-          {
-            a++;
-            if(a == _id.length)
-            {
-              _callback(result1);
-            }
-          });
+            conn.execute(`delete from test_userinfo where id='${_id[i]}'`, _callback);
         }
       }
     });
