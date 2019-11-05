@@ -69,14 +69,14 @@ function SelectUserlist(_checked, _id, _res,)// 유저리스트, 고장판단로
     g_data = list_userinfolist.UpdateUserinfoCreatelist(result.rows);
     bodydata = ejs.render(g_src_body,
     {
-      userview: `<input type = "text" value = ${peo}> `,
+      userview: `<input type = "text" value = ${peo} name = "count_emp" > `,
       search:'',
       dbname: g_name, //데이터 명
       dbdata: g_data, // 데이터
       fault_list: g_fault_list2, //전체 고장판단로직 리스트
       hidden_check: g_checked,
       hidden_check_length: g_checked.length,
-      controls : g_controls,
+      controls : g_controls
     });
     g_page = ejs.render(g_src,
     {
