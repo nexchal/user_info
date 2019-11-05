@@ -115,7 +115,8 @@
         window.open(`/page/${select_num}`, "a", "width=1069, height=418, left=100, top=50");
       }
 
-      function Reload() {             //새로고침
+      function Reload() //새로고침
+      {
         window.location.reload(true);
       }
 

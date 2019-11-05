@@ -15,7 +15,7 @@ function Createview(_area,_area1,_station, _logicname)//유저 리스트 보기 
     view += `<option value ='${_area[i]}'>${_area[i]}</option>`;
   }
   view += `</select> &nbsp
-  <select name ='area1' style="display:none">
+  <select name ='reason' style="display:none">
   <option value='0' selected>-- 선택 --</option>`;
   for(var i=0; i < _area1.length; i++)
   {

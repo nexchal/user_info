@@ -167,7 +167,21 @@ module.exports = {
 			var dbConfig = require('./../config/dbconfig2.js');
       oracledb.getConnection(dbConfig,function(err, conn)
       {
-        conn.execute(`insert into test_userinfo VALUES ('${_emp_no}','${_new_name}','${_new_tel}','${_area}','${_reason}','${_station}',tmp_seq.NEXTVAL)`, callback);
+        conn.execute(`select emp_no from test_userinfo where emp_tel='${_new_tel}'`, function(err, result)
+      {
+        if(result.rows == '')
+        {
+          console.log(`추가`+result);
+          conn.execute(`insert into test_userinfo VALUES ('${_emp_no}','${_new_name}','${_new_tel}','${_area}','${_reason}','${_station}',tmp_seq.NEXTVAL)`, callback);
+        }
+        else
+        {
+          console.log(`입력 전화번호`+_new_tel);
+          console.log(`중복`+result);
+          callback(`overlap`);
+        }
+      });
+
       });
     },
 }

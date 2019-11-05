@@ -23,7 +23,7 @@ var g_name = fs.readFileSync(__dirname+'/../views/list_column.ejs','utf8');//use
 var g_page; //response print page 변수
 var g_data; //userlist 저장변수
 var g_checked;
-faultlogic.SelectLogic(ShowFault);
+faultlogic.SelectLogic(ShowFault); //FaultLogic list 호출
 
 router.post('/update_process',function(_req, _res)// 수정 실행
 {
