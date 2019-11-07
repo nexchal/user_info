@@ -1,4 +1,4 @@
-function Createview(_area,_area1,_station, _logicname)//유저 리스트 보기 리스트박스
+function Createview(_area, _reason, _station, _logicname)//유저 리스트 보기 리스트박스
 {
 
   var view=`&nbsp <select name='view' onchange="ViewChange()">
@@ -17,9 +17,9 @@ function Createview(_area,_area1,_station, _logicname)//유저 리스트 보기 
   view += `</select> &nbsp
   <select name ='reason' style="display:none">
   <option value='0' selected>-- 선택 --</option>`;
-  for(var i=0; i < _area1.length; i++)
+  for(var i=0; i < _reason.length; i++)
   {
-    view += `<option value ='${_area1[i]}'>${_area1[i]}</option>`;
+    view += `<option value ='${_reason[i]}'>${_reason[i]}</option>`;
   }
   view += `</select> &nbsp <select name ='station' style="display:none">
   <option value='0' selected>-- 선택 --</option>`;
@@ -37,7 +37,7 @@ function Createview(_area,_area1,_station, _logicname)//유저 리스트 보기 
   return view;
 }
 
-function CreateCategory(_area,_area1,_station)
+function CreateCategory(_area,_reason,_station)
 {
   var view=``;
   view += ` <select name ='area'>
@@ -48,9 +48,9 @@ function CreateCategory(_area,_area1,_station)
   }
   view += `</select> <select name ='reason'>
   <option value='0' selected>-- 선택 --</option>`;
-  for(var i=0; i < _area1.length; i++)
+  for(var i=0; i < _reason.length; i++)
   {
-    view += `<option value ='${_area1[i]}'>${_area1[i]}</option>`;
+    view += `<option value ='${_reason[i]}'>${_reason[i]}</option>`;
   }
   view += `</select> <select name ='station'>
   <option value='0' selected>-- 선택 --</option>`;

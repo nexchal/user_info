@@ -14,17 +14,17 @@ module.exports =
 		console.log("개인별 수정");
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      conn.execute(`delete from TEST_ERR_TYPE where id = ${emp_id}`, function (err, result) //유저의 모든 FaultLogic 삭제
+      conn.execute(`delete from USER_FAULT_TYPE where id = ${emp_id}`, function (err, result) //유저의 모든 FaultLogic 삭제
       {
         if(ch_count === '1')	//추가할 Faultlogic이 1개이면
         {
-          conn.execute(`insert into TEST_ERR_TYPE values(${ch_value},${emp_id})`, function (err, result0){}); //넘겨받은 FaultLogic과 유저ID를 DB에 추가
+          conn.execute(`insert into USER_FAULT_TYPE values(${ch_value},${emp_id})`, function (err, result0){}); //넘겨받은 FaultLogic과 유저ID를 DB에 추가
         }
         else //FaultLogic이 여러개이면
         {
           for(var i = 0; i < ch_count; i++) //FaultLogic의 개수 만큼 반복 실행
           {
-            conn.execute(`insert into TEST_ERR_TYPE values(${ch_value[i]},${emp_id})`, function (err, result1){});
+            conn.execute(`insert into USER_FAULT_TYPE values(${ch_value[i]},${emp_id})`, function (err, result1){});
           }
         }
       });
@@ -55,20 +55,22 @@ module.exports =
 			{
 				for(var i = 0; i < _emp_id.length; i++)
 				{
-		      conn.execute(`delete from TEST_ERR_TYPE where id = ${_emp_id[i]}`, function (err, result) //넘겨받은 유저들의 ID에 추가되어 있는 FaultLogic 삭제
+		      conn.execute(`delete from USER_FAULT_TYPE where id = ${_emp_id[i]}`, function (err, result) //넘겨받은 유저들의 ID에 추가되어 있는 FaultLogic 삭제
 		      { console.log("삭제"+result); });
 				}
 				for(var i = 0; i < _emp_id.length; i++)
 				{
-	      	conn.execute(`insert into TEST_ERR_TYPE values(${_fault},${_emp_id[i]})`, function (err, result0)//다중유저의 ID와 FaultLogic을 DB에 반복 추가
-	      	{ console.log("고장 1개 유저 여러명"+result0);});
+	      	conn.execute(`insert into USER_FAULT_TYPE values(${_fault},${_emp_id[i]})`, function (err, result0)//다중유저의 ID와 FaultLogic을 DB에 반복 추가
+	      	{
+	      		console.log("고장 1개 유저 여러명"+result0);
+	      	});
 	      }
 			}
 	    else //FaultLogic 수가 여러개 이면
 	    {
 				for(var i = 0; i < _emp_id.length; i++)
 				{
-					conn.execute(`delete from TEST_ERR_TYPE where id = ${_emp_id[i]}`, function (err, result) //넘겨받은 유저들의 ID에 추가되어 있는 FaultLogic 삭제
+					conn.execute(`delete from USER_FAULT_TYPE where id = ${_emp_id[i]}`, function (err, result) //넘겨받은 유저들의 ID에 추가되어 있는 FaultLogic 삭제
 					{ console.log("삭제"+result); });
 				}
 
@@ -81,7 +83,7 @@ module.exports =
 				}
 				/* for(var i = 0; i < _emp_id.length; i++)
 				{
-					conn.execute(`delete from TEST_ERR_TYPE where id = ${_emp_id[i]}`, function (err, result)
+					conn.execute(`delete from USER_FAULT_TYPE where id = ${_emp_id[i]}`, function (err, result)
 					{ console.log("삭제"+result); });
 				}*/
 				/*
@@ -95,7 +97,7 @@ module.exports =
 						});
 					}
 				}*/
-					 	/*conn.execute(`insert into TEST_ERR_TYPE values(${_fault[j]},${_emp_id[i]})`, function (err, result1)
+					 	/*conn.execute(`insert into USER_FAULT_TYPE values(${_fault[j]},${_emp_id[i]})`, function (err, result1)
 		        {
 		          console.log("고장 여러개 유저 여러명:"+result1);
 		        });*/

@@ -60,7 +60,7 @@ function page(_view)
 
    // [처음]
 
-   $('<span class="pageNum first"> <a href="#">처음</a> </span>').bind('click', {newPage: page},function(event)
+   $('<span class="pageNum first"> <a href="#"><img src ="assets/images/paging_first.jpg" width="20px" height="15px" alt="<<"></img></a> </span>').bind('click', {newPage: page},function(event)
    {
     currentPage = 0;
     $table.trigger('repaginate');
@@ -69,7 +69,7 @@ function page(_view)
 
    // [이전]
 
-   $('<span class="pageNum back"> <a href="#">이전</a> </span>').bind('click', {newPage: page},function(event)
+   $('<span class="pageNum back"> <a href="#">◀</a> </span>').bind('click', {newPage: page},function(event)
    {
     if(currentPage == 0)
     {
@@ -77,7 +77,7 @@ function page(_view)
     }
     currentPage = currentPage-1;
     $table.trigger('repaginate');
-    $($(".pageNum")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
+    $($(".pageNum")[(currentPage-nowp)+2]).addClass('active').css("font-weight","bold").siblings().removeClass('active').css("font-weight","");
    }).appendTo(pagination).addClass('clickable');
 
 
@@ -88,7 +88,7 @@ function page(_view)
    {
      if(nowp==page)
      {
-       $(`<span class="pageNum" style="font-weight:bold"> <a href="#" id = "pagenum">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
+       $('<span class="pageNum" style="font-weight:bold"> <a href="#" id = "pagenum">'+(page + 1)+'</a> </span>').bind('click', {newPage: page}, function(event)
        {
 
         currentPage = event.data['newPage'];
@@ -99,7 +99,7 @@ function page(_view)
      }
      else
      {
-       $(`<span class="pageNum"> <a href="#" id = "pagenum">${page + 1}</a> </span>`).bind('click', {newPage: page}, function(event)
+       $('<span class="pageNum"> <a href="#" id = "pagenum">'+(page + 1)+'</a> </span>').bind('click', {newPage: page}, function(event)
        {
 
         currentPage = event.data['newPage'];
@@ -113,7 +113,7 @@ function page(_view)
 
    // [다음]
 
-   $('<span class="pageNum next"> <a href="#">다음</a> </span>').bind('click', {newPage: page},function(event)
+   $('<span class="pageNum next"> <a href="#">▶</a> </span>').bind('click', {newPage: page},function(event)
    {
     if(currentPage == numPages-1)
     {
@@ -121,15 +121,15 @@ function page(_view)
     }
     currentPage = currentPage+1;
     $table.trigger('repaginate');
-    $($(".pageNum")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
+    $($(".pageNum")[(currentPage-nowp)+2]).addClass('active').css("font-weight","bold").siblings().removeClass('active').css("font-weight","");
    }).appendTo(pagination).addClass('clickable');
 
    // [끝]
-   $('<span class="pageNum last"> <a href="#">끝</a> </span>').bind('click', {newPage: page},function(event)
+   $('<span class="pageNum last"> <a href="#"><img src ="assets/images/paging_end.png" width="20px" height="15px"  alt=">>"></img></a> </span>').bind('click', {newPage: page},function(event)
    {
     currentPage = numPages-1;
     $table.trigger('repaginate');
-    $($(".pageNum")[endp-nowp+1]).addClass('active').siblings().removeClass('active');
+    $($(".pageNum")[endp-nowp+1]).addClass('active').css("font-weight","bold").siblings().removeClass('active').css("font-weight","");
    }).appendTo(pagination).addClass('clickable');
    $($(".pageNum")[2]).addClass('active');
   });

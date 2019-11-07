@@ -49,7 +49,6 @@ function UserinfoAllUser(_res)//모든 유저리스트 생성
         frame_top: g_src_top, //상단바
         frame_body: bodydata, //바디 내용
         frame_bottom:'', //삭제, 수정, 추가 버튼
-
       });
       _res.writeHead(200);
       _res.end(g_page);
@@ -121,6 +120,7 @@ function UserinfoAreaUser(_res, _area, _reason, _station)//지역관련 유저�
       _res.end(g_page);
     });
 }
+
 function Area()
 {
   scadastation.AreaSearch(5009999,Reason);//scadastation db 모듈에서 지역 select하여 Reason 함수를 콜백
@@ -142,7 +142,7 @@ function Listbox(_station)//사용자 보기 리스트 박스 생성
     {
       g_faultlogic = _logicname.rows;
       create_userview = list_createlistbox.Createview(g_area, g_reason, g_station, g_faultlogic);
-      g_userview=ejs.render(g_userview_listbox,
+      g_userview = ejs.render(g_userview_listbox,
       {
        listbox:create_userview
       });

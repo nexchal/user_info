@@ -204,3 +204,19 @@
       {
         window.open(`/insertuser`, "a", "width=525, height=300, left=100, top=50");
       }
+      function SearchPopup() // 사용자 추가 시 팝업으로 생성
+      {
+        window.open(`/searchuser`, "search", "width=525, height=300, left=100, top=50");
+      }
+      function SearchCheck()
+      {
+        var uname = document.frm.username;
+        var utel = document.frm.usertel;
+        var form = document.frm;
+        if(uname.value === '' && utel.value === '')
+        {
+          alert("failed!");
+          return false;
+        }
+
+      }

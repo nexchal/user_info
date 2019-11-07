@@ -1,0 +1,17 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome">
+<script src='../assets/js/checkform.js'></script>
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+
+</head>
+<body>
+<form method = "post" name = "frm" action="/searchuseraction" onsubmit="return formaction()">
+<p>사용자 이름: <input type="text" name="username" value=''>
+<p>Tel(ex: 010-1234-5678)
+<p>사용자 번호: <input type="tel" name="usertel" value='' pattern="\d{3}-\d{3,4}-\d{4}">
+<p><input type="submit" value="찾기" onclick="SearchCheck()">
+</form>
+</body>
+</html>

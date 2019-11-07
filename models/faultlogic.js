@@ -19,7 +19,7 @@ module.exports = {
   {
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      conn.execute(`select LOGICNAME,LOGICID from FAULTLOGIC where LOGICID in (select fault_logicid from test_err_type where id = ${_emp_id})`,function (err, logic_name)
+      conn.execute(`select LOGICNAME,LOGICID from FAULTLOGIC where LOGICID in (select fault_logicid from USER_FAULT_TYPE where id = ${_emp_id})`,function (err, logic_name)
       {
           _callback(_res, logic_name);
       });
@@ -32,7 +32,7 @@ module.exports = {
     var fault_number = "";
     oracledb.getConnection(dbConfig,function(err, conn)
     {
-      str = "select FAULT_LOGICID FROM test_err_type where ";
+      str = "select FAULT_LOGICID FROM USER_FAULT_TYPE where ";
       for(var i = 0; i<_emp_id.length; i++)
       {
         str = str + " id = "+ _emp_id[i] ;
