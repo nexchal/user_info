@@ -142,7 +142,7 @@
         {
             if(result[v] == emp[0].value ) // 모든 사용자가 공통적인 고장유형을 가진 경우
             {                              //  그 유형은 투명도 조절 css를 제거
-              v = v*1;
+              v = v*1;  // 숫자로 변환
               console.log(v + "고장유형을 가진 사용자 : " + result[v] +" 명");
               var qq = '#f_list' +(v-1);
               $(qq).removeClass('some_selected').attr('checked', true);
@@ -154,6 +154,20 @@
               $(qq).addClass('some_selected').attr('checked', true);
             }
         }
+
+        $(function () // 체크박스 체크 시 적용된 css 제거
+        {
+          for(var t=0; t<25; t++)
+          {
+            t = t*1;
+            var zz =  '#f_list' +(v-1);
+            $(zz).change (function ()
+            {
+              $(zz).removeClass('some_selected')
+            });
+          }
+        });
+
 
         for(var i = 0; i < val.length; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
         {

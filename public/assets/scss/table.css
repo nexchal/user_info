@@ -32,23 +32,24 @@
   border-radius:10px;
 }
 
-table{
+.userlist table{
   width: 100%;
   border-collapse: collapse;
   border-top: 1px solid #ccc;
+  text-align: center;
 }
 
-table tr{
+.userlist table tr{
   border-bottom: 1px solid #ccc;
 }
-table td, th{
+.userlist table td, th{
   padding: 7px 15px;
 }
-table thead tr{
+.userlist table thead tr{
   background-color: #F5F5F5;
 }
 
-tr:hover td:first-child{
+.userlist tr:hover td:first-child{
   text-decoration: underline;
   color : red;
 }
@@ -61,7 +62,7 @@ tr:hover td:first-child{
 table tbody tr:nth-child(odd){
   background-color: #F4FFFF;
 } */
-table tbody td+td{
+.userlist table tbody td+td{
   text-align: center;
 }
 body{
@@ -87,4 +88,18 @@ a{
   display:inline-block;
   float :right;
   margin-left:10px;
+}
+
+
+.faultlist table{
+  width: 80%;
+  border-collapse: collapse;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.faultlist table td, th{
+  padding: 7px 15px;
 }

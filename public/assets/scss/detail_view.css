@@ -1,33 +1,25 @@
-table{
+.faultlist table{
   width: 100%;
   border-collapse: collapse;
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 
-table tr{
-  border-bottom: 1px solid #ccc;
-}
-table td, th{
+
+.faultlist table td, th{
   padding: 7px 15px;
 }
-table tbody tr{
-  background-color: snow;
-} */
-table tbody td+td{
-  text-align: center;
-}
+
+
 body{
-  color:#0C2E2B;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .add{
-  background:#ccc;
-  color:white;
+  color:black;
   position:relative;
   height:25px;
   padding:0 2em;
@@ -35,7 +27,30 @@ body{
   transition:800ms ease all;
   outline:none;
 }
-.add{
-  background:#fff;
-  color:black;
+
+a
+{
+  text-decoration:none;
+  color:inherit;
+}
+
+.userlist table{
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+
+.userlist table tr{
+  border-bottom: 1px solid #ccc;
+}
+.userlist table td, th{
+  padding: 7px 15px;
+}
+.userlist table thead tr{
+  background-color: #F5F5F5;
+}
+
+.userlist table tbody td+td{
+  text-align: center;
 }

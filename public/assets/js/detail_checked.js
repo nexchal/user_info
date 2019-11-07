@@ -35,13 +35,18 @@ function DetailChecked()
   function AddType() // 추가버튼 클릭 시 fault유형 목록들을 보여줌
    {
      var x = document.getElementById("myDIV");
-     if (x.style.display === "none")
+     var y = document.getElementById("save");
+
+     if (x.style.display === "none" && y.style.display === "none")
      {
        x.style.display = "block";
+       y.style.display = "block";
+
      }
      else
      {
        x.style.display = "none";
+       y.style.display = "none";
      }
 
      show_box = document.getElementsByName("fault"); // fault 유형 값을 가지고 있는 체크박스 name

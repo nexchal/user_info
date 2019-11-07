@@ -14,7 +14,7 @@ function FaultList(_list) //고장목록 생성
           `<td><label><input type="checkbox" name="fault" id = "f_list${[i]}" value="${_list[i][0]}"> ${_list[i][1]} </label></td>`
         }
       }
-      data = `<table id = detail>` + data + `</table>`;
+      data = `<table class = "detail">` + data + `</table>`;
       return data;
 }
 

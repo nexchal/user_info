@@ -3,6 +3,7 @@
 
 <form name="frm" method = "post">
 <input type="hidden" name="checked" value=0>
+<div class = "userlist">
 <table  class="tbList paginated">
   <%- userview %>
   <br>
@@ -27,8 +28,12 @@
         <%- dbdata %>
     </tbody>
 </table>
+</div>
+    <br><br><br>
+    <div class= "faultlist"><center>
     <%- fault_list %>
-
+    </center></div>
+    <br><br><br>
     <div style = "display :none">
     <input type = "checkbox" name = "all" > all
     <% for( var i = 0 ; i < hidden_check_length; i++) { %>

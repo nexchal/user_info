@@ -1,3 +1,4 @@
+
 /***********************                User의 FaultLogic 리스트 모듈            ***********************/
 
 var ejs = require('ejs');
@@ -31,14 +32,26 @@ module.exports =
 		_res.writeHead(302, {Location: `${address}`});
 		_res.end();
  	},
-
-	MultiDelete: function(_req, _res, _fault, _emp_count,_emp_id)// 다중 유저의 FaultLogic 수정
+/*
+	MultiInsert: function()
+	{
+		for(var emc = 0; emc < _emp_id.length; emc++)
+		{
+			for(var fc = 0; fc < fault.length; fc++)
+			conn.excute(`insert into TEST_ERR_TYPE values(${_fault[fc]},${_emp_id[em]})`,function(err, result)
+			{
+					console.log(result);
+			});
+		}
+	},
+*/
+	MultiDelete: function(_req, _res, _fault, _fault_count,_emp_id)// 다중 유저의 FaultLogic 수정
 	{
 		console.log("여러명 수정");
-		console.log(_emp_count);
+		console.log(_fault_count);
 		oracledb.getConnection(dbConfig,function(err, conn)
     {
-			if(_emp_count === '1') //FaultLogic 수가 1개이면
+			if(_fault_count === '1') //FaultLogic 수가 1개이면
 			{
 				for(var i = 0; i < _emp_id.length; i++)
 				{
@@ -48,9 +61,7 @@ module.exports =
 				for(var i = 0; i < _emp_id.length; i++)
 				{
 	      	conn.execute(`insert into TEST_ERR_TYPE values(${_fault},${_emp_id[i]})`, function (err, result0)//다중유저의 ID와 FaultLogic을 DB에 반복 추가
-	      	{
-	      		console.log("고장 1개 유저 여러명"+result0);
-	      	});
+	      	{ console.log("고장 1개 유저 여러명"+result0);});
 	      }
 			}
 	    else //FaultLogic 수가 여러개 이면
@@ -63,7 +74,7 @@ module.exports =
 
 				for(var i = 0; i < _emp_id.length; i++)
 	      {
-					for(var j = 0; j < _emp_count; j++)
+					for(var j = 0; j < _fault_count; j++)
 		      {
 						conn.execute(`BEGIN test_jw(${_emp_id[i]},${_fault[j]}); END;`);
 					}
@@ -76,7 +87,7 @@ module.exports =
 				/*
 	      for(var i = 0; i < _emp_id.length; i++)
 	      {
-					for(var j = 0; j < _emp_count; j++)
+					for(var j = 0; j < _fault_count; j++)
 		      {
 						conn.execute(`exec test_jw(${_fault[j]},${_emp_id[i]})`, function (err, result1)
 						{

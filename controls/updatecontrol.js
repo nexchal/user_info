@@ -31,12 +31,12 @@ router.post('/update_process',function(_req, _res)// 수정 실행
   var post = _req.body;
   var emp_id = post.id; //선택한 유저 id
   var fault = post.fault; // 선택한 고장판단 로직
-  var emp_count = post.checked; // 선택한 유저의 갯수
+  var fault_count = post.checked; // 선택한 고장로직의 수
 
  // 선택된 emp_id 의 값 받아와야함
 
   var db = require('../models/delete_faultlogic.js'); //고장판단로직 삭제 모듈
-  db.MultiDelete(_req, _res, fault, emp_count,emp_id) //유저 id를 넘겨주어 고장판단로직 삭제 및 수정
+  db.MultiDelete(_req, _res, fault, fault_count,emp_id) //유저 id를 넘겨주어 고장판단로직 삭제 및 수정
 });
 
 router.post('/update',function(_req, _res)// 수정 페이지
@@ -69,7 +69,7 @@ function SelectUserlist(_checked, _id, _res,)// 유저리스트, 고장판단로
     g_data = list_userinfolist.UpdateUserinfoCreatelist(result.rows);
     bodydata = ejs.render(g_src_body,
     {
-      userview: `<input type = "text" value = ${peo} name = "count_emp" > `,
+      userview: `<input type = "hidden" value = ${peo} name = "count_emp" > `,
       search:'',
       dbname: g_name, //데이터 명
       dbdata: g_data, // 데이터

@@ -7,7 +7,6 @@
 function hello()
 {
   box = document.getElementsByName("q"); // fault 유형 값을 가지고 있는 체크박스 name
-
   for(var i = 0; i < 3; i++) // 상세보기 페이지에서 사용자가 이전에 선택한 고장 목록은 체크되게함
   {
    box[i].checked=true;
@@ -18,23 +17,22 @@ function hello()
 </head>
 <body>
 <form method = "post" name = "frm">
-<input type="hidden" name="checked" value=0>
-<div style = "background-color : #ccc"> &nbsp </div>
-담당자 : <%- name %><br>
-연락처 : <%- tel %><br>
-지역 :  <%- area %>&nbsp<%- area1 %>&nbsp<%- station %> <br>
-
+<input type="hidden" name="checked" value=0><div class = "userlist">
+<table>
+<tr><thead><th>사번</th>  <th>담당자 </th>     <th>연락처</th>        <th>지역</th> </thead></tr>
+<tr><td><%- title %></td>  <td><%- name %></td> <td> <%- tel %></td>  <td><%- area %>&nbsp<%- area1 %>&nbsp<%- station %></td></tr>
+</table>
 고장사유 리스트: <br><strong> <!--현재 보고있는 사용자가 가지고 있는 고장유형 출력 -->
 <% for( var j = 0 ; j < length; j++) { %>
   <li><%- user_fault[j][0] %></li>
   <% } %>
   <br>
-</strong>
-<div style = "background-color : #ccc"> <input type = "button" class = "add" onclick="AddType()" value = "추가"></div>
-
+</strong></div>
+<div style = "float:left;"><input type = "button" class = "add" onclick="AddType()" value = "추가"></div>
+<div id = "save" style = "float:left; display:none;"><input type = "button" class = "add" onclick = "DetailChecked()" value = "저장"></div>
 
 <!--전체 고장유형 목록 -->
-
+<div class = "faultlist">
 <div id="myDIV"  style = " display:none ;">
 <%- all_fault_list %>
 
@@ -50,9 +48,8 @@ function hello()
 
 <!-- 현재 보고있는 사용자의 id값,사원번호를 수정기능에 사용하기위해 hidden 으로 생성-->
 <input type = "hidden" name = "title" value ="<%= title %>">
-<input type = "hidden" name = "emp_id" value ="<%= id %>">
+<input type = "hidden" name = "emp_id" value ="<%= id %>"></div></div>
 
-<button type = "button" onclick = "DetailChecked()">저장</div></form>
-
+</form>
 </body>
 </html>
