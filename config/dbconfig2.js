@@ -1,5 +1,5 @@
 module.exports = {
-  user: "ncappdb",
-  password: "callisto01",
-  connectString: "10.1.31.169/xa21"
+  user: "scott",
+  password: "1234",
+  connectString: "192.168.10.250/TestDB"
 };
