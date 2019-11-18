@@ -8,11 +8,24 @@
 <link rel="stylesheet" type="text/css" href="../assets/scss/table.css" />
 <!--<link rel="stylesheet" type="text/css" href="../assets/scss/selectbox.css" /> -->
 <script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script>
+function mail() // 추가버튼 클릭 시 fault유형 목록들을 보여줌
+ {
+   var x = document.getElementById("myDIV");
+
+   if (x.style.display === "none")
+   {
+     x.style.display = "block";
+   }
+   else
+   {
+     x.style.display = "none";
+   }
+ }
+</script>
 <script src="../assets/js/checkform.js"></script>
 
 	<style>
-
-
     div.top {
         height:170px;
         width: 100%;
@@ -37,8 +50,16 @@
 </head>
 <body>
 
-	 <div class="top"><%- frame_top %></div><br>
+	  <div class="top"><%- frame_top %></div><br>
     <div class="right"><%- frame_body %></div><br>
+    <form method = "post" name = "sendmail">
+    <center><a href = "#" onclick="mail()">오류 문의 : joamoon7@nexchal.co.kr </a><br>
+    <div id = myDIV style = "display:none;">
+    <div style = "display:inline;"><input type ="text" name = "title" placeholder ="your email(ex: abcd@example.co.kr)"> </div>
+    <div><input type = "text" style = "height:200px;" name = "description" placeholder="내용"> </div>
+    <input type = button onclick = "Mailsubmit()" value = "제출">
+    </div></center>
+    </form>
     <div class="bottom"><%- frame_bottom %></div>
 
 </body>

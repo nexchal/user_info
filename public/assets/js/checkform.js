@@ -1,4 +1,110 @@
-
+$(function () // 체크박스 체크 시 적용된 css 제거
+{
+  $('#f_list0').change (function ()
+  {
+    $('#f_list0').removeClass('some_selected');
+  });
+  $('#f_list1').change (function ()
+  {
+    $('#f_list1').removeClass('some_selected');
+  });
+  $('#f_list2').change (function ()
+  {
+    $('#f_list2').removeClass('some_selected');
+  });
+  $('#f_list3').change (function ()
+  {
+    $('#f_list3').removeClass('some_selected');
+  });
+  $('#f_list4').change (function ()
+  {
+    $('#f_list4').removeClass('some_selected');
+  });
+  $('#f_list5').change (function ()
+  {
+    $('#f_list5').removeClass('some_selected');
+  });
+  $('#f_list6').change (function ()
+  {
+    $('#f_list6').removeClass('some_selected');
+  });
+  $('#f_list7').change (function ()
+  {
+    $('#f_list7').removeClass('some_selected');
+  });
+  $('#f_list8').change (function ()
+  {
+    $('#f_list8').removeClass('some_selected');
+  });
+  $('#f_list9').change (function ()
+  {
+    $('#f_list9').removeClass('some_selected');
+  });
+  $('#f_list10').change (function ()
+  {
+    $('#f_list10').removeClass('some_selected');
+  });
+  $('#f_list11').change (function ()
+  {
+    $('#f_list11').removeClass('some_selected');
+  });
+  $('#f_list12').change (function ()
+  {
+    $('#f_list12').removeClass('some_selected');
+  });
+  $('#f_list13').change (function ()
+  {
+    $('#f_list13').removeClass('some_selected');
+  });
+  $('#f_list14').change (function ()
+  {
+    $('#f_list14').removeClass('some_selected');
+  });
+  $('#f_list15').change (function ()
+  {
+    $('#f_list15').removeClass('some_selected');
+  });
+  $('#f_list16').change (function ()
+  {
+    $('#f_list16').removeClass('some_selected');
+  });
+  $('#f_list17').change (function ()
+  {
+    $('#f_list17').removeClass('some_selected');
+  });
+  $('#f_list18').change (function ()
+  {
+    $('#f_list18').removeClass('some_selected');
+  });
+  $('#f_list19').change (function ()
+  {
+    $('#f_list19').removeClass('some_selected');
+  });
+  $('#f_list20').change (function ()
+  {
+    $('#f_list20').removeClass('some_selected');
+  });
+  $('#f_list21').change (function ()
+  {
+    $('#f_list21').removeClass('some_selected');
+  });
+  $('#f_list22').change (function ()
+  {
+    $('#f_list22').removeClass('some_selected');
+  });
+  $('#f_list23').change (function ()
+  {
+    $('#f_list23').removeClass('some_selected');
+  });
+  $('#f_list24').change (function ()
+  {
+    $('#f_list24').removeClass('some_selected');
+  });
+  $('#f_list25').change (function ()
+  {
+    $('#f_list25').removeClass('some_selected');
+  });
+});
   function CheckUpdate()
     {
       var checkbox = document.getElementsByName("id"); // 메인페이지 유저목록 테이블에서 선택한 체크박스 값
@@ -110,6 +216,13 @@
         }
       }
 
+      function Mailsubmit()
+        {
+          document.frm.action = `/Mailsubmit`;
+          document.frm.submit();
+        }
+
+
       function ShowPopup(select_num) // 상세보기 페이지 클릭 시 팝업으로
       {
         window.open(`/page/${select_num}`, "a", "width=1069, height=418, left=100, top=50");
@@ -154,21 +267,6 @@
               $(qq).addClass('some_selected').attr('checked', true);
             }
         }
-
-        $(function () // 체크박스 체크 시 적용된 css 제거
-        {
-          for(var t=0; t<25; t++)
-          {
-            t = t*1;
-            var zz =  '#f_list' +(v-1);
-            $(zz).change (function ()
-            {
-              $(zz).removeClass('some_selected')
-            });
-          }
-        });
-
-
         for(var i = 0; i < val.length; i++) // 사용자가 이전에 선택한 고장 목록은 체크되게함
         {
           nick = val[i].value-1;
