@@ -89,6 +89,43 @@ router.post('/searchuseraction',function(_req, _res)//유저 검색 출력
   }
 });
 
+router.post('/Mailsubmit',function(_req, _res)//유저 검색 출력
+{
+    var post = _req.body;
+    var title = post.title;
+    var description = post.description;
+    console.log()
+    var nodemailer = require('nodemailer');
+    var transporter = nodemailer.createTransport(
+    {
+      service:'gmail',
+      auth:
+      {
+          user : 'joamoon7@gmail.com',
+          pass : 'enahrspt1!'
+      }
+    });
+
+    var mailOption =
+    {
+        from : 'joamoon7@gmail.com',
+        to : 'sprjsem1@gmail.com',
+        subject : 'test',
+        text : 'Hello'
+    };
+
+    transporter.sendMail(mailOption, function(err, info)
+    {
+        if ( err )
+        {
+            console.error('Send Mail error : ', err);
+        }
+        else
+        {
+            console.log('Message sent : ', info);
+        }
+    });
+});
 function SearchPrint(_user)
 {
   g_data = list_userinfolist.UserinfoCreatelist(_user.rows);

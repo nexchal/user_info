@@ -32,7 +32,7 @@ module.exports =
 		_res.writeHead(302, {Location: `${address}`});
 		_res.end();
  	},
-/*
+
 	MultiInsert: function()
 	{
 		for(var emc = 0; emc < _emp_id.length; emc++)
@@ -44,7 +44,7 @@ module.exports =
 			});
 		}
 	},
-*/
+
 	MultiDelete: function(_req, _res, _fault, _fault_count,_emp_id)// 다중 유저의 FaultLogic 수정
 	{
 		console.log("여러명 수정");
